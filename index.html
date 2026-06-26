@@ -5642,106 +5642,291 @@
             ctx.save();
             ctx.translate(canvas.width / 2, canvas.height / 2);
             
-            const glowGradient = ctx.createRadialGradient(0, 0, 20, 0, 0, 80);
-            glowGradient.addColorStop(0, 'rgba(155, 89, 182, 0.3)');
+            const glowGradient = ctx.createRadialGradient(0, 0, 20, 0, 0, 100);
+            glowGradient.addColorStop(0, 'rgba(155, 89, 182, 0.4)');
+            glowGradient.addColorStop(0.5, 'rgba(155, 89, 182, 0.15)');
             glowGradient.addColorStop(1, 'rgba(155, 89, 182, 0)');
             ctx.fillStyle = glowGradient;
             ctx.beginPath();
-            ctx.arc(0, 0, 80, 0, Math.PI * 2);
+            ctx.arc(0, 0, 100, 0, Math.PI * 2);
             ctx.fill();
             
-            // 车身
-            ctx.fillStyle = '#3a2a5a';
-            ctx.beginPath();
-            ctx.moveTo(-50, 20);
-            ctx.quadraticCurveTo(-50, -10, -20, -20);
-            ctx.quadraticCurveTo(20, -25, 50, -10);
-            ctx.quadraticCurveTo(50, 20, 20, 25);
-            ctx.lineTo(-20, 25);
-            ctx.closePath();
-            ctx.fill();
-            
-            // 发光车身
+            // 悬浮光效底座
             ctx.fillStyle = '#9b59b6';
-            ctx.globalAlpha = 0.7;
+            ctx.globalAlpha = 0.3;
+            ctx.shadowColor = '#9b59b6';
+            ctx.shadowBlur = 30;
             ctx.beginPath();
-            ctx.moveTo(-40, 15);
-            ctx.quadraticCurveTo(-40, -5, -15, -15);
-            ctx.quadraticCurveTo(15, -20, 40, -5);
-            ctx.quadraticCurveTo(40, 15, 15, 20);
-            ctx.lineTo(-15, 20);
+            ctx.ellipse(-25, 40, 25, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(20, 40, 28, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 引擎尾焰
+            ctx.fillStyle = '#ff00ff';
+            ctx.globalAlpha = 0.8;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 30;
+            const flameHeight = 15 + Math.sin(Date.now() / 100) * 5;
+            ctx.beginPath();
+            ctx.moveTo(-35, 22);
+            ctx.lineTo(-45, 22 + flameHeight);
+            ctx.lineTo(-25, 22 + flameHeight * 0.8);
             ctx.closePath();
             ctx.fill();
             
-            // 发光条纹
-            ctx.fillStyle = '#ff00ff';
+            ctx.fillStyle = '#ff66ff';
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(-35, 22);
+            ctx.lineTo(-42, 22 + flameHeight * 0.7);
+            ctx.lineTo(-28, 22 + flameHeight * 0.5);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 后轮
+            ctx.strokeStyle = '#ff00ff';
+            ctx.lineWidth = 5;
             ctx.shadowColor = '#ff00ff';
-            ctx.shadowBlur = 15;
-            ctx.fillRect(-35, -5, 70, 3);
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(40, 22, 20, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // 后轮发光环
+            ctx.fillStyle = '#ff00ff';
+            ctx.shadowBlur = 25;
+            ctx.beginPath();
+            ctx.arc(40, 22, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 后轮辐条
+            ctx.strokeStyle = '#ff66ff';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 10;
+            for(let i=0; i<6; i++) {
+                const angle = i * Math.PI / 3;
+                ctx.beginPath();
+                ctx.moveTo(40 + Math.cos(angle) * 8, 22 + Math.sin(angle) * 8);
+                ctx.lineTo(40 + Math.cos(angle) * 18, 22 + Math.sin(angle) * 18);
+                ctx.stroke();
+            }
             
             // 前轮
             ctx.strokeStyle = '#00ffff';
             ctx.lineWidth = 4;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
             ctx.beginPath();
-            ctx.arc(-40, 20, 15, 0, Math.PI * 2);
+            ctx.arc(-38, 22, 16, 0, Math.PI * 2);
             ctx.stroke();
             
-            // 前轮光效
+            // 前轮发光环
             ctx.fillStyle = '#00ffff';
             ctx.shadowBlur = 20;
             ctx.beginPath();
-            ctx.arc(-40, 20, 5, 0, Math.PI * 2);
+            ctx.arc(-38, 22, 6, 0, Math.PI * 2);
             ctx.fill();
             
-            // 后轮
-            ctx.beginPath();
-            ctx.arc(35, 20, 18, 0, Math.PI * 2);
-            ctx.stroke();
+            // 前轮辐条
+            ctx.strokeStyle = '#00ccff';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 8;
+            for(let i=0; i<5; i++) {
+                const angle = i * Math.PI / 2.5;
+                ctx.beginPath();
+                ctx.moveTo(-38 + Math.cos(angle) * 6, 22 + Math.sin(angle) * 6);
+                ctx.lineTo(-38 + Math.cos(angle) * 14, 22 + Math.sin(angle) * 14);
+                ctx.stroke();
+            }
             
-            // 后轮光效
-            ctx.beginPath();
-            ctx.arc(35, 20, 6, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // 悬浮光效
-            ctx.fillStyle = '#00ff00';
-            ctx.shadowColor = '#00ff00';
-            ctx.shadowBlur = 25;
-            ctx.beginPath();
-            ctx.ellipse(-20, 35, 20, 8, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.ellipse(20, 35, 20, 8, 0, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // 驾驶座
+            // 车身主体
             ctx.fillStyle = '#2a1a4a';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
             ctx.beginPath();
-            ctx.moveTo(-10, -10);
-            ctx.lineTo(-5, 5);
-            ctx.lineTo(25, 5);
-            ctx.lineTo(20, -10);
+            ctx.moveTo(-55, 15);
+            ctx.quadraticCurveTo(-55, -20, -25, -30);
+            ctx.quadraticCurveTo(0, -35, 45, -20);
+            ctx.quadraticCurveTo(55, -5, 50, 20);
+            ctx.lineTo(25, 28);
+            ctx.lineTo(-15, 28);
             ctx.closePath();
             ctx.fill();
             
+            // 车身发光装甲
+            ctx.fillStyle = '#9b59b6';
+            ctx.globalAlpha = 0.5;
+            ctx.shadowColor = '#9b59b6';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.moveTo(-50, 18);
+            ctx.quadraticCurveTo(-50, -15, -20, -25);
+            ctx.quadraticCurveTo(5, -30, 40, -15);
+            ctx.quadraticCurveTo(48, 0, 45, 22);
+            ctx.lineTo(20, 26);
+            ctx.lineTo(-10, 26);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 车身发光条纹
+            ctx.fillStyle = '#ff00ff';
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 25;
+            ctx.fillRect(-45, -8, 90, 4);
+            
+            ctx.fillStyle = '#ff66ff';
+            ctx.shadowBlur = 15;
+            ctx.fillRect(-40, 5, 80, 3);
+            
+            // 车头
+            ctx.fillStyle = '#1a0a2a';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.moveTo(-55, 15);
+            ctx.lineTo(-50, -10);
+            ctx.quadraticCurveTo(-45, -20, -30, -25);
+            ctx.lineTo(-25, -30);
+            ctx.lineTo(-35, -15);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 车头灯光
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 30;
+            ctx.beginPath();
+            ctx.arc(-45, -10, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 车头装饰
+            ctx.fillStyle = '#ff00ff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.moveTo(-48, -5);
+            ctx.lineTo(-40, -5);
+            ctx.lineTo(-44, -15);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 驾驶座
+            ctx.fillStyle = '#1a0a2a';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.moveTo(-5, -15);
+            ctx.lineTo(-5, 5);
+            ctx.lineTo(35, 5);
+            ctx.lineTo(30, -12);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 驾驶座发光边框
+            ctx.strokeStyle = '#ff00ff';
+            ctx.lineWidth = 3;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.moveTo(-5, -15);
+            ctx.lineTo(-5, 5);
+            ctx.lineTo(35, 5);
+            ctx.lineTo(30, -12);
+            ctx.closePath();
+            ctx.stroke();
+            
             // 把手
             ctx.strokeStyle = '#00ffff';
-            ctx.lineWidth = 4;
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
+            
             ctx.beginPath();
-            ctx.moveTo(-15, -5);
-            ctx.lineTo(-25, -15);
+            ctx.moveTo(-8, -8);
+            ctx.lineTo(-15, -15);
+            ctx.lineTo(-25, -18);
             ctx.stroke();
+            
             ctx.beginPath();
-            ctx.moveTo(15, -5);
-            ctx.lineTo(25, -15);
+            ctx.moveTo(25, -8);
+            ctx.lineTo(32, -15);
+            ctx.lineTo(42, -18);
             ctx.stroke();
+            
+            // 把手握把
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(-25, -18, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(42, -18, 5, 0, Math.PI * 2);
+            ctx.fill();
             
             // 仪表盘
             ctx.fillStyle = '#00ffff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(8, -8, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 仪表盘指针
+            ctx.strokeStyle = '#ff00ff';
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 10;
+            ctx.save();
+            ctx.translate(8, -8);
+            ctx.rotate(Math.PI / 4);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(5, 0);
+            ctx.stroke();
+            ctx.restore();
+            
+            // 仪表盘刻度
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.shadowBlur = 5;
+            for(let i=0; i<6; i++) {
+                const angle = -Math.PI/3 + i * Math.PI/9;
+                ctx.save();
+                ctx.translate(8, -8);
+                ctx.rotate(angle);
+                ctx.beginPath();
+                ctx.moveTo(5, 0);
+                ctx.lineTo(6, 0);
+                ctx.stroke();
+                ctx.restore();
+            }
+            
+            // 车身侧面装饰
+            ctx.fillStyle = '#ff00ff';
+            ctx.globalAlpha = 0.7;
             ctx.shadowBlur = 15;
             ctx.beginPath();
-            ctx.arc(0, -5, 5, 0, Math.PI * 2);
+            ctx.arc(35, 15, 10, Math.PI/2, Math.PI * 1.5);
             ctx.fill();
+            
+            ctx.fillStyle = '#00ffff';
+            ctx.globalAlpha = 0.7;
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(-25, 15, 8, Math.PI/2, Math.PI * 1.5);
+            ctx.fill();
+            
+            // 悬浮粒子特效
+            ctx.globalAlpha = 0.5;
+            for(let i=0; i<8; i++) {
+                const angle = (Date.now() / 400 + i * 0.4);
+                const x = Math.cos(angle) * 70;
+                const y = Math.sin(angle) * 50 + 10;
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
             
             ctx.globalAlpha = 1;
             ctx.shadowBlur = 0;
