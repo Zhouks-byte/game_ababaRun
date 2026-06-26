@@ -141,7 +141,201 @@
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             border: 2px solid #9b59b6;
         }
-        #menu, #gameover {
+        #menu {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+            pointer-events: auto;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .menu-container {
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 30px;
+            box-sizing: border-box;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 顶部信息栏 */
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.2), rgba(156, 39, 176, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 2px solid rgba(79, 195, 247, 0.5);
+        }
+        
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .user-level {
+            font-size: 11px;
+            color: #00ffff;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+        }
+        
+        .currency-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .currency-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .currency-item.coins {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .currency-item.diamonds {
+            border-color: rgba(156, 39, 176, 0.3);
+        }
+        
+        .currency-icon {
+            font-size: 14px;
+        }
+        
+        .currency-value {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .currency-item.coins .currency-value {
+            color: #ffd700;
+        }
+        
+        .currency-item.diamonds .currency-value {
+            color: #ce93d8;
+        }
+        
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+        
+        .stamina-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .stamina-icon {
+            font-size: 14px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .stamina-bar {
+            width: 50px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .stamina-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00ffaa);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        
+        .stamina-text {
+            font-size: 11px;
+            color: #00ff88;
+            font-weight: bold;
+        }
+        
+        .btn-refill {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            border: none;
+            border-radius: 50%;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-refill:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .header-buttons .btn {
+            padding: 6px 10px !important;
+            font-size: 12px !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .header-buttons .btn-icon {
+            font-size: 12px;
+        }
+        
+        #gameover {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
@@ -149,47 +343,184 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: #000000;
+            background: rgba(0, 0, 0, 0.92);
             pointer-events: auto;
         }
-        #menu {
-            background: #000000;
-            border: 4px solid rgba(138, 43, 226, 0.8);
-            border-radius: 0;
-            box-shadow: 
-                0 0 50px rgba(138, 43, 226, 0.5),
-                inset 0 0 80px rgba(138, 43, 226, 0.15);
+        
+        #menu.hidden, #gameover.hidden { display: none; }
+
+        /* 标题区域 */
+        .menu-title-section {
+            text-align: center;
+            margin: 15px 0;
+            flex-shrink: 0;
+        }
+        
+        .game-title {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            margin-bottom: 5px;
+            letter-spacing: 3px;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .game-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+        
+        .character-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            border: 1px solid rgba(79, 195, 247, 0.3);
+        }
+        
+        .badge-icon {
+            font-size: 14px;
+        }
+        
+        .badge-text {
+            font-size: 12px;
+            color: #fff;
+        }
+        
+        .badge-divider {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 主按钮区域 */
+        .menu-main-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+            flex-shrink: 0;
+        }
+        
+        .btn-start {
+            padding: 12px 50px !important;
+            font-size: 20px !important;
+            background: linear-gradient(135deg, #00ffff, #0088ff) !important;
+            border: none !important;
+            box-shadow: 0 6px 24px rgba(0, 255, 255, 0.3) !important;
+        }
+        
+        .btn-start:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 32px rgba(0, 255, 255, 0.5) !important;
+        }
+        
+        /* 功能按钮网格 */
+        .menu-feature-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px auto;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            max-width: 700px;
+        }
+        
+        .btn-feature {
+            padding: 12px 15px !important;
+            background: linear-gradient(145deg, rgba(30, 30, 60, 0.9), rgba(20, 20, 40, 0.95)) !important;
+            border: 1px solid rgba(79, 195, 247, 0.3) !important;
+            border-radius: 12px !important;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0;
+            gap: 4px;
+            transition: all 0.3s;
+            min-width: 100px;
+            flex: 1;
+            max-width: 160px;
         }
-        #menu.hidden, #gameover.hidden { display: none; }
-
-        /* 版本号显示 */
+        
+        .btn-feature .btn-icon {
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+        
+        .btn-feature .btn-text {
+            font-size: 13px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .btn-feature .btn-desc {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.6);
+            display: none;
+        }
+        
+        .btn-feature:hover {
+            transform: translateY(-2px);
+            border-color: rgba(79, 195, 247, 0.6) !important;
+            box-shadow: 0 6px 20px rgba(79, 195, 247, 0.2) !important;
+        }
+        
+        /* 底部区域 */
+        .menu-footer {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(79, 195, 247, 0.2);
+            flex-shrink: 0;
+        }
+        
+        .btn-logout {
+            padding: 8px 16px !important;
+            font-size: 12px !important;
+            background: rgba(255, 100, 100, 0.1) !important;
+            border: 1px solid rgba(255, 100, 100, 0.3) !important;
+            color: rgba(255, 100, 100, 0.8) !important;
+        }
+        
+        .btn-logout:hover {
+            background: rgba(255, 100, 100, 0.2) !important;
+            border-color: rgba(255, 100, 100, 0.5) !important;
+            color: #ff6b6b !important;
+        }
+        
         .version-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            font-size: 14px;
-            color: #666;
-            padding: 5px 12px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            border: 1px solid rgba(0, 255, 255, 0.15);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             letter-spacing: 1px;
         }
-
+        
         /* 菜单按钮行 */
         .menu-buttons-row {
             display: flex;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         /* 玩家昵称显示 */
         .player-nickname {
-            font-size: 14px;
+            font-size: 13px;
             color: #ffd700;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
             padding: 6px 12px;
@@ -241,6 +572,7 @@
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) !important;
         }
 
+        /* 通用按钮样式 - 新菜单使用 */
         .btn-gold {
             background: linear-gradient(135deg, #ffd700, #ffaa00);
             color: #333;
@@ -258,13 +590,6 @@
             color: #fff;
             border: none;
             box-shadow: 0 0 4px rgba(255, 107, 107, 0.5);
-            font-size: 12px !important;
-            padding: 4px 10px !important;
-            margin: 0px !important;
-            margin-left: 6px !important;
-            border-radius: 8px !important;
-            letter-spacing: 0px !important;
-            border-width: 1px !important;
         }
 
         .btn-daily:hover {
@@ -282,76 +607,11 @@
             color: #fff;
             border: none;
             box-shadow: 0 0 4px rgba(255, 159, 67, 0.5);
-            font-size: 12px !important;
-            padding: 4px 10px !important;
-            margin: 0px !important;
-            margin-left: 6px !important;
-            border-radius: 8px !important;
-            letter-spacing: 0px !important;
-            border-width: 1px !important;
         }
 
         .btn-shop:hover {
             background: linear-gradient(135deg, #ffa852, #ff6b35);
             box-shadow: 0 0 10px rgba(255, 159, 67, 0.8);
-        }
-
-        .menu-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 10px 15px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .menu-top-left {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-top-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-        }
-
-        .menu-top-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .currency-display {
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #fff;
-        }
-
-        .currency-item {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            color: #ffd700;
-            text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
-            padding: 2px 6px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 6px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .currency-item:last-child {
-            color: #9b59b6;
-            text-shadow: 0 0 6px rgba(155, 89, 182, 0.5);
-            border-color: rgba(155, 89, 182, 0.3);
-        }
-
-        .current-mount-display {
-            font-size: 14px;
-            color: #9b59b6;
         }
 
         /* 登录界面 */
@@ -731,20 +991,6 @@
         }
 
         /* 当前角色显示 */
-        .current-character-display {
-            font-size: 16px;
-            color: #888;
-            margin: 15px 0;
-            padding: 8px 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-        .current-character-display span {
-            color: #00ffff;
-            font-weight: bold;
-        }
-
         /* 角色选择弹窗 */
         #charSelectModal {
             position: absolute;
@@ -932,27 +1178,7 @@
             border-radius: 12px;
         }
 
-        /* 赛博朋克标题 */
-        .title {
-            font-size: 56px;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
-            letter-spacing: 6px;
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
-            50% { text-shadow: 0 0 40px rgba(0, 255, 255, 1), 0 0 60px rgba(255, 0, 255, 0.5); }
-        }
-        .subtitle {
-            font-size: 20px;
-            color: #ff00ff;
-            margin-bottom: 40px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
-        }
+        /* 通用按钮基础样式 */
         .btn {
             padding: 15px 60px;
             font-size: 24px;
@@ -1168,29 +1394,255 @@
             border-radius: 8px;
         }
 
-        .final-score {
-            font-size: 28px;
-            color: #FFD700;
-            margin: 15px 0;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        .gameover-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+            box-sizing: border-box;
         }
+        
+        .gameover-card {
+            background: linear-gradient(145deg, rgba(30, 30, 60, 0.95), rgba(20, 20, 40, 0.98));
+            border: 2px solid rgba(79, 195, 247, 0.5);
+            border-radius: 20px;
+            padding: 25px 40px;
+            width: 90%;
+            max-width: 900px;
+            min-height: 350px;
+            box-shadow: 
+                0 0 40px rgba(79, 195, 247, 0.2),
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 60px rgba(79, 195, 247, 0.05);
+            animation: fadeInScale 0.4s ease-out;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .gameover-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+        }
+        
         .gameover-title {
-            font-size: 42px;
-            color: #ff4444;
-            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+            font-size: 32px;
+            color: #ff6b6b;
+            text-shadow: 
+                0 0 20px rgba(255, 107, 107, 0.6),
+                0 0 40px rgba(255, 107, 107, 0.3);
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .new-record {
+            display: none;
+            font-size: 20px;
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            margin-top: 8px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .gameover-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 25px;
+            flex: 1;
+            min-height: 0;
+        }
+        
+        .gameover-stats {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            flex: 1;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(79, 195, 247, 0.08);
+            padding: 18px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            text-align: center;
+        }
+        
+        .stat-icon {
+            font-size: 32px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(79, 195, 247, 0.15);
+            border-radius: 50%;
+        }
+        
+        .stat-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 4px;
+        }
+        
+        .stat-value {
+            font-size: 26px;
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .gameover-record {
+            min-width: 180px;
+            max-width: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 25px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+        }
+        
+        .record-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 10px;
         }
-        .revive-info {
-            font-size: 18px;
-            color: #FFD700;
-            margin: 10px 0;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        
+        .record-value {
+            font-size: 32px;
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
-        .revive-info span { color: #ff00ff; }
+        
+        .revive-section {
+            background: rgba(156, 39, 176, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            padding: 15px 20px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .revive-header {
+            font-size: 15px;
+            color: #ce93d8;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .revive-stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+        
+        .revive-stat {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .revive-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        .revive-value {
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .revive-value.cost {
+            color: #ff6b6b;
+        }
+        
         .gameover-buttons {
             display: flex;
-            gap: 15px;
-            margin-top: 10px;
+            flex-direction: row;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .gameover-buttons .btn {
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+        
+        .btn-revive {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+            border: 1px solid rgba(102, 126, 234, 0.5) !important;
+        }
+        
+        .btn-revive:hover {
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.5) !important;
+        }
+        
+        .btn-restart {
+            background: linear-gradient(135deg, #11998e, #38ef7d) !important;
+            border: 1px solid rgba(17, 153, 142, 0.5) !important;
+        }
+        
+        .btn-restart:hover {
+            box-shadow: 0 0 25px rgba(56, 239, 125, 0.5) !important;
+        }
+        
+        .btn-exit {
+            background: linear-gradient(135deg, #434343, #000000) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+        
+        .btn-exit:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
         }
 
         /* 规则弹窗 */
@@ -1537,44 +1989,101 @@
         </div>
 
         <div id="menu">
-            <div class="menu-top-bar">
-                <div class="menu-top-left">
-                    <div class="stamina-display" id="staminaDisplay">
-                        <span class="stamina-icon">⚡</span>
-                        <span class="stamina-count" id="staminaCount">10</span>
-                        <span class="stamina-max">/10</span>
+            <div class="menu-container">
+                <!-- 顶部信息栏 -->
+                <div class="menu-header">
+                    <div class="header-left">
+                        <div class="user-info">
+                            <div class="user-avatar">🎮</div>
+                            <div class="user-details">
+                                <div class="user-name" id="playerNickname">玩家</div>
+                                <div class="user-level">Lv.1</div>
+                            </div>
+                        </div>
+                        <div class="currency-group">
+                            <div class="currency-item coins">
+                                <span class="currency-icon">💰</span>
+                                <span class="currency-value" id="coinAmount">0</span>
+                            </div>
+                            <div class="currency-item diamonds">
+                                <span class="currency-icon">💎</span>
+                                <span class="currency-value" id="diamondAmount">0</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="currency-display">
-                        <span class="currency-item">💰 <span id="coinAmount">0</span></span>
-                        <span class="currency-item">💎 <span id="diamondAmount">0</span></span>
-                        <button class="btn btn-small btn-gold" id="buyStaminaBtn">+500金币</button>
+                    <div class="header-right">
+                        <div class="stamina-container">
+                            <span class="stamina-icon">⚡</span>
+                            <span class="stamina-bar">
+                                <span class="stamina-fill" id="staminaFill" style="width: 100%"></span>
+                            </span>
+                            <span class="stamina-text"><span id="staminaCount">10</span>/10</span>
+                            <button class="btn-refill" id="buyStaminaBtn">+</button>
+                        </div>
+                        <div class="header-buttons">
+                            <button class="btn btn-daily" id="dailyCheckinBtn">
+                                <span class="btn-icon">📅</span>
+                                <span class="btn-text">签到</span>
+                            </button>
+                            <button class="btn btn-shop" id="shopBtn">
+                                <span class="btn-icon">🛒</span>
+                                <span class="btn-text">商店</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-top-right">
-                    <div class="player-nickname">当前用户：<span id="playerNickname">玩家</span></div>
-                    <div class="menu-top-buttons">
-                        <button class="btn btn-small btn-daily" id="dailyCheckinBtn">📅 签到</button>
-                        <button class="btn btn-small btn-shop" id="shopBtn">🛒 商店</button>
+
+                <!-- 标题区域 -->
+                <div class="menu-title-section">
+                    <div class="game-title">阿巴巴跑酷</div>
+                    <div class="game-subtitle">CYBER PARKOUR</div>
+                    <div class="character-badge">
+                        <span class="badge-icon">🎭</span>
+                        <span class="badge-text">当前角色: <span id="currentCharName">阿巴巴</span></span>
+                        <span class="badge-divider">|</span>
+                        <span class="badge-icon">🦄</span>
+                        <span class="badge-text">坐骑: <span id="currentMountName">无</span></span>
                     </div>
                 </div>
+
+                <!-- 主按钮区域 -->
+                <div class="menu-main-buttons">
+                    <button class="btn btn-start" id="startBtn">
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">开始游戏</span>
+                    </button>
+                </div>
+
+                <!-- 功能按钮区域 -->
+                <div class="menu-feature-grid">
+                    <button class="btn btn-feature" id="charSelectBtn">
+                        <span class="btn-icon">🎭</span>
+                        <span class="btn-text">角色选择</span>
+                        <span class="btn-desc">选择你的角色</span>
+                    </button>
+                    <button class="btn btn-feature" id="mountSelectBtn">
+                        <span class="btn-icon">🦄</span>
+                        <span class="btn-text">坐骑选择</span>
+                        <span class="btn-desc">获得增益效果</span>
+                    </button>
+                    <button class="btn btn-feature" id="rulesBtn">
+                        <span class="btn-icon">📖</span>
+                        <span class="btn-text">游戏规则</span>
+                        <span class="btn-desc">了解玩法技巧</span>
+                    </button>
+                    <button class="btn btn-feature" id="leaderboardBtn">
+                        <span class="btn-icon">🏆</span>
+                        <span class="btn-text">排行榜</span>
+                        <span class="btn-desc">查看玩家排名</span>
+                    </button>
+                </div>
+
+                <!-- 底部区域 -->
+                <div class="menu-footer">
+                    <button class="btn btn-logout" id="logoutBtn">注销账号</button>
+                    <div class="version-badge">Beta 1.0</div>
+                </div>
             </div>
-            <div class="version-badge">Beta 1.0</div>
-            <div class="title">阿巴巴跑酷</div>
-            <div class="subtitle">CYBER PARKOUR</div>
-            <div class="current-character-display">
-                当前角色: <span id="currentCharName">阿巴巴</span>
-                <span class="current-mount-display"> | 当前坐骑: <span id="currentMountName">无</span></span>
-            </div>
-            <div class="menu-buttons-row">
-                <button class="btn" id="startBtn">开始游戏</button>
-                <button class="btn btn-secondary" id="charSelectBtn">角色选择</button>
-                <button class="btn btn-secondary" id="mountSelectBtn">坐骑选择</button>
-            </div>
-            <div class="menu-buttons-row">
-                <button class="btn btn-secondary" id="rulesBtn">游戏玩法与规则</button>
-                <button class="btn btn-secondary" id="leaderboardBtn">排行榜</button>
-            </div>
-            <button class="btn btn-danger" id="logoutBtn">注销账号</button>
         </div>
 
         <!-- 角色选择弹窗 -->
@@ -1901,21 +2410,68 @@
         </div>
 
         <div id="gameover" class="hidden">
-            <div class="gameover-title">游戏结束</div>
-            <div class="final-score">最终距离: <span id="finalScore">0</span></div>
-            <div class="final-score">本局金币: <span id="finalCoins">0</span></div>
-            <div class="final-score">本局钻石: <span id="finalDiamonds">0</span></div>
-            <div id="newRecord" style="display:none;color:#FFD700;font-size:24px;margin:10px">🎉 新纪录！</div>
-            <div id="allTimeHigh">历史最高分: <span id="allTimeScore">0</span></div>
-            <div id="reviveSection" style="margin:10px 0">
-                <div class="revive-info">可用金币: <span id="totalCoinsOver">0</span></div>
-                <div class="revive-info">可用钻石: <span id="totalDiamondsOver">0</span></div>
-                <div class="revive-info">复活消耗: <span id="reviveCost">1</span> 金币</div>
-            </div>
-            <div class="gameover-buttons">
-                <button class="btn btn-secondary" id="reviveBtn">使用金币复活</button>
-                <button class="btn" id="restartBtn">重新开始</button>
-                <button class="btn btn-secondary" id="exitToMenuBtn" style="margin-top: 10px;">退出游戏</button>
+            <div class="gameover-container">
+                <div class="gameover-card">
+                    <div class="gameover-header">
+                        <div class="gameover-title">游戏结束</div>
+                        <div id="newRecord" class="new-record">🎉 新纪录！</div>
+                    </div>
+                    
+                    <div class="gameover-main">
+                        <div class="gameover-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">🏃</div>
+                                <div class="stat-info">
+                                    <div class="stat-label">最终距离</div>
+                                    <div class="stat-value" id="finalScore">0</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">💰</div>
+                                <div class="stat-info">
+                                    <div class="stat-label">本局金币</div>
+                                    <div class="stat-value" id="finalCoins">0</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">💎</div>
+                                <div class="stat-info">
+                                    <div class="stat-label">本局钻石</div>
+                                    <div class="stat-value" id="finalDiamonds">0</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gameover-record">
+                            <div class="record-label">🏆 历史最高分</div>
+                            <div class="record-value" id="allTimeScore">0</div>
+                        </div>
+                    </div>
+                    
+                    <div id="reviveSection" class="revive-section">
+                        <div class="revive-header">🔄 复活选项</div>
+                        <div class="revive-stats">
+                            <div class="revive-stat">
+                                <span class="revive-label">可用金币</span>
+                                <span class="revive-value" id="totalCoinsOver">0</span>
+                            </div>
+                            <div class="revive-stat">
+                                <span class="revive-label">可用钻石</span>
+                                <span class="revive-value" id="totalDiamondsOver">0</span>
+                            </div>
+                            <div class="revive-stat">
+                                <span class="revive-label">复活消耗</span>
+                                <span class="revive-value cost">💰 <span id="reviveCost">1</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gameover-buttons">
+                        <button class="btn btn-revive" id="reviveBtn">使用金币复活</button>
+                        <button class="btn btn-restart" id="restartBtn">重新开始</button>
+                        <button class="btn btn-exit" id="exitToMenuBtn">退出游戏</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -3872,474 +4428,179 @@
             const bounce = player.isJumping ? 0 : Math.sin(player.runFrame * Math.PI / 2) * 3;
             const legOffset = player.isJumping ? 0 : player.runFrame;
 
-            // 颜色主题
-            const colors = currentCharacter === 'baba' ? {
-                primary: '#ff00ff',
-                secondary: '#00ffff',
-                accent: '#ff6b9d',
-                skin: '#e8d4f0'
-            } : {
-                primary: '#00ffff',
-                secondary: '#ff44ff',
-                accent: '#6bfff8',
-                skin: '#d4e8f0'
-            };
+            const charColor = currentCharacter === 'baba' ? '#4fc3f7' : '#ce93d8';
+            const charGlow = currentCharacter === 'baba' ? '#00ffff' : '#ff00ff';
+            const bellyColor = currentCharacter === 'baba' ? '#b3e5fc' : '#f3e5f5';
+            const eyeColor = '#ffffff';
 
-            // 跳跃特效
-            if (player.jumpCount > 1 && player.doubleJumpFrame < 15) {
-                const particleAlpha = 1 - player.doubleJumpFrame / 15;
-                const jumpColors = currentCharacter === 'xiaoba' ? ['#00ffff', '#ff44ff', '#44ffff'] : ['#ff00ff', '#00ffff', '#ff4444'];
-                for (let i = 0; i < 12; i++) {
-                    const angle = (i / 12) * Math.PI * 2;
-                    const radius = 15 + player.doubleJumpFrame * 2;
-                    ctx.fillStyle = `${jumpColors[i % 3]}${Math.floor(particleAlpha * 99).toString(16).padStart(2, '0')}`;
-                    ctx.beginPath();
-                    ctx.arc(px + player.width / 2 + Math.cos(angle) * radius,
-                            py + player.height / 2 + Math.sin(angle) * radius,
-                            5 - player.doubleJumpFrame * 0.25, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                player.doubleJumpFrame++;
-            }
-
-            let rotation = 0;
-            if (player.jumpCount > 1) rotation = Math.sin(player.doubleJumpFrame * 0.3) * 0.3;
-            if (rotation !== 0) {
-                ctx.translate(px + player.width / 2, py + player.height / 2);
-                ctx.rotate(rotation);
-                ctx.translate(-(px + player.width / 2), -(py + player.height / 2));
-            }
+            // 发光特效
+            ctx.shadowColor = charGlow;
+            ctx.shadowBlur = 20;
 
             // ===== 阴影效果 =====
-            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            ctx.fillStyle = 'rgba(0,0,0,0.2)';
             ctx.beginPath();
-            ctx.ellipse(px + player.width / 2, py + player.height + 3, 20, 6, 0, 0, Math.PI * 2);
+            ctx.ellipse(px + player.width / 2, py + player.height + 5, 22, 8, 0, 0, Math.PI * 2);
             ctx.fill();
 
-            // ===== 腿部 - 流畅动画 =====
+            // ===== 腿部 - 像素风格 =====
             if (player.isSliding) {
-                // 下蹲时的腿部
-                ctx.fillStyle = '#1a0a2e';
-                ctx.beginPath();
-                ctx.ellipse(px + player.width / 2, py + player.height - 8, 25, 8, 0, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.strokeStyle = colors.secondary;
-                ctx.shadowColor = colors.secondary;
-                ctx.shadowBlur = 6;
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(px + 10, py + player.height - 8);
-                ctx.lineTo(px + player.width - 10, py + player.height - 8);
-                ctx.stroke();
-                ctx.shadowBlur = 0;
+                ctx.fillStyle = charColor;
+                ctx.fillRect(px + 8, py + player.height - 12, 34, 12);
             } else if (player.isJumping) {
-                // 跳跃时的腿部
-                const legGrad = ctx.createLinearGradient(0, py + player.height - 25, 0, py + player.height);
-                legGrad.addColorStop(0, '#16213e');
-                legGrad.addColorStop(1, '#0d0d1a');
-                ctx.fillStyle = legGrad;
-                ctx.beginPath();
-                ctx.moveTo(px + 10, py + player.height - 25);
-                ctx.quadraticCurveTo(px + 8, py + player.height - 15, px + 12, py + player.height);
-                ctx.lineTo(px + 18, py + player.height);
-                ctx.quadraticCurveTo(px + 20, py + player.height - 15, px + 18, py + player.height - 25);
-                ctx.closePath();
-                ctx.fill();
-                ctx.beginPath();
-                ctx.moveTo(px + 32, py + player.height - 28);
-                ctx.quadraticCurveTo(px + 30, py + player.height - 15, px + 34, py + player.height);
-                ctx.lineTo(px + 40, py + player.height);
-                ctx.quadraticCurveTo(px + 42, py + player.height - 15, px + 40, py + player.height - 28);
-                ctx.closePath();
-                ctx.fill();
+                ctx.fillStyle = charColor;
+                ctx.fillRect(px + 8, py + player.height - 20, 12, 20);
+                ctx.fillRect(px + 30, py + player.height - 20, 12, 20);
             } else {
-                // 奔跑时的腿部
-                const leg1Angle = Math.sin(legOffset * Math.PI / 2) * 0.5;
-                const leg2Angle = Math.sin(legOffset * Math.PI / 2 + Math.PI) * 0.5;
+                const legOffsetY = Math.sin(legOffset * Math.PI / 2) * 6;
+                ctx.fillStyle = charColor;
+                ctx.fillRect(px + 8, py + player.height - 20 + legOffsetY, 12, 20);
+                ctx.fillRect(px + 30, py + player.height - 20 - legOffsetY, 12, 20);
                 
-                const legGrad = ctx.createLinearGradient(0, 0, 0, 25);
-                legGrad.addColorStop(0, '#16213e');
-                legGrad.addColorStop(0.5, '#1a0a2e');
-                legGrad.addColorStop(1, '#0d0d1a');
-                
-                ctx.save();
-                ctx.translate(px + 15, py + player.height - 10 + bounce);
-                ctx.rotate(leg1Angle);
-                ctx.fillStyle = legGrad;
-                ctx.beginPath();
-                ctx.moveTo(-6, 0);
-                ctx.quadraticCurveTo(-7, 12, -5, 25);
-                ctx.lineTo(5, 25);
-                ctx.quadraticCurveTo(7, 12, 6, 0);
-                ctx.closePath();
-                ctx.fill();
-                ctx.strokeStyle = colors.secondary;
-                ctx.shadowColor = colors.secondary;
-                ctx.shadowBlur = 6;
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(-4, 5);
-                ctx.lineTo(-4, 20);
-                ctx.stroke();
-                ctx.shadowBlur = 0;
-                ctx.restore();
-
-                ctx.save();
-                ctx.translate(px + 35, py + player.height - 10 + bounce);
-                ctx.rotate(leg2Angle);
-                ctx.fillStyle = legGrad;
-                ctx.beginPath();
-                ctx.moveTo(-6, 0);
-                ctx.quadraticCurveTo(-7, 12, -5, 25);
-                ctx.lineTo(5, 25);
-                ctx.quadraticCurveTo(7, 12, 6, 0);
-                ctx.closePath();
-                ctx.fill();
-                ctx.strokeStyle = colors.secondary;
-                ctx.shadowColor = colors.secondary;
-                ctx.shadowBlur = 6;
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(4, 5);
-                ctx.lineTo(4, 20);
-                ctx.stroke();
-                ctx.shadowBlur = 0;
-                ctx.restore();
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(px + 10, py + player.height - 4 + legOffsetY, 8, 4);
+                ctx.fillRect(px + 32, py + player.height - 4 - legOffsetY, 8, 4);
             }
 
-            // ===== 身体 - 流线型战斗服 =====
-            const bodyGrad = ctx.createLinearGradient(px, py + 15 + bounce, px + player.width, py + 55 + bounce);
-            bodyGrad.addColorStop(0, '#16213e');
-            bodyGrad.addColorStop(0.3, '#1a0a2e');
-            bodyGrad.addColorStop(0.7, '#0f0f23');
-            bodyGrad.addColorStop(1, '#16213e');
-            ctx.fillStyle = bodyGrad;
-
-            if (player.isSliding) {
-                ctx.beginPath();
-                ctx.moveTo(px, py + 20);
-                ctx.quadraticCurveTo(px - 5, py + 35, px + 5, py + 50);
-                ctx.lineTo(px + player.width - 5, py + 50);
-                ctx.quadraticCurveTo(px + player.width + 5, py + 35, px + player.width, py + 20);
-                ctx.quadraticCurveTo(px + player.width / 2, py + 15, px, py + 20);
-                ctx.closePath();
-                ctx.fill();
-            } else {
-                ctx.beginPath();
-                ctx.moveTo(px + 8, py + 18 + bounce);
-                ctx.quadraticCurveTo(px + 3, py + 35 + bounce, px + 10, py + 50 + bounce);
-                ctx.lineTo(px + player.width - 10, py + 50 + bounce);
-                ctx.quadraticCurveTo(px + player.width - 3, py + 35 + bounce, px + player.width - 8, py + 18 + bounce);
-                ctx.quadraticCurveTo(px + player.width / 2, py + 12 + bounce, px + 8, py + 18 + bounce);
-                ctx.closePath();
-                ctx.fill();
-            }
-
-            // 身体霓虹装饰线
-            ctx.strokeStyle = colors.primary;
-            ctx.shadowColor = colors.primary;
-            ctx.shadowBlur = 10;
-            ctx.lineWidth = 2;
+            // ===== 身体 - 像素风格 =====
+            const bodyY = py + 15 + bounce;
+            ctx.fillStyle = charColor;
+            ctx.fillRect(px + 5, bodyY, 40, 35);
             
-            if (!player.isSliding) {
-                // 胸口V型线
-                ctx.beginPath();
-                ctx.moveTo(px + player.width / 2, py + 22 + bounce);
-                ctx.lineTo(px + player.width / 2 - 12, py + 35 + bounce);
-                ctx.moveTo(px + player.width / 2, py + 22 + bounce);
-                ctx.lineTo(px + player.width / 2 + 12, py + 35 + bounce);
-                ctx.stroke();
-                
-                // 腰部线条
-                ctx.beginPath();
-                ctx.moveTo(px + 12, py + 45 + bounce);
-                ctx.lineTo(px + player.width - 12, py + 45 + bounce);
-                ctx.stroke();
-                
-                // 侧边线条
-                ctx.beginPath();
-                ctx.moveTo(px + 10, py + 25 + bounce);
-                ctx.lineTo(px + 10, py + 40 + bounce);
-                ctx.moveTo(px + player.width - 10, py + 25 + bounce);
-                ctx.lineTo(px + player.width - 10, py + 40 + bounce);
-                ctx.stroke();
-            }
-            ctx.shadowBlur = 0;
+            ctx.fillStyle = bellyColor;
+            ctx.beginPath();
+            ctx.roundRect(px + 12, bodyY + 10, 26, 20, 8);
+            ctx.fill();
 
-            // ===== 手臂 - 流畅动画 =====
-            const armGrad = ctx.createLinearGradient(0, 0, 0, 25);
-            armGrad.addColorStop(0, '#16213e');
-            armGrad.addColorStop(1, '#1a0a2e');
-            
+            // 胸口装饰
+            ctx.fillStyle = charGlow;
+            ctx.beginPath();
+            ctx.moveTo(px + player.width / 2, bodyY + 12);
+            ctx.lineTo(px + player.width / 2 - 8, bodyY + 22);
+            ctx.lineTo(px + player.width / 2 + 8, bodyY + 22);
+            ctx.closePath();
+            ctx.fill();
+
+            // ===== 手臂 - 像素风格 =====
             if (player.isSliding) {
-                ctx.fillStyle = armGrad;
-                ctx.beginPath();
-                ctx.moveTo(px + player.width, py + 30);
-                ctx.quadraticCurveTo(px + player.width + 15, py + 35, px + player.width + 18, py + 45);
-                ctx.lineTo(px + player.width + 22, py + 45);
-                ctx.quadraticCurveTo(px + player.width + 20, py + 32, px + player.width + 5, py + 28);
-                ctx.closePath();
-                ctx.fill();
-                ctx.fillStyle = colors.primary;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 8;
-                ctx.beginPath();
-                ctx.arc(px + player.width + 20, py + 45, 5, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
+                ctx.fillStyle = charColor;
+                ctx.fillRect(px - 8, bodyY + 10, 13, 18);
             } else if (player.isJumping) {
-                ctx.fillStyle = armGrad;
-                ctx.beginPath();
-                ctx.moveTo(px + 5, py + 20);
-                ctx.quadraticCurveTo(px + 3, py + 30, px + 6, py + 40);
-                ctx.lineTo(px + 12, py + 40);
-                ctx.quadraticCurveTo(px + 14, py + 28, px + 10, py + 20);
-                ctx.closePath();
-                ctx.fill();
-                ctx.beginPath();
-                ctx.moveTo(px + player.width - 5, py + 18);
-                ctx.quadraticCurveTo(px + player.width - 3, py + 28, px + player.width - 6, py + 38);
-                ctx.lineTo(px + player.width - 12, py + 38);
-                ctx.quadraticCurveTo(px + player.width - 14, py + 26, px + player.width - 10, py + 18);
-                ctx.closePath();
-                ctx.fill();
-                ctx.fillStyle = colors.primary;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 8;
-                ctx.beginPath();
-                ctx.arc(px + 8, py + 42, 5, 0, Math.PI * 2);
-                ctx.arc(px + player.width - 8, py + 40, 5, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
+                ctx.fillStyle = charColor;
+                ctx.fillRect(px - 5, bodyY + 5, 10, 20);
+                ctx.fillRect(px + 45, bodyY + 5, 10, 20);
             } else {
-                const armSwing = Math.sin(player.runFrame * Math.PI / 2) * 15;
+                const armSwing = Math.sin(player.runFrame * Math.PI / 2) * 8;
+                ctx.fillStyle = charColor;
+                ctx.fillRect(px - 5, bodyY + 5 + armSwing, 10, 20);
+                ctx.fillRect(px + 45, bodyY + 5 - armSwing, 10, 20);
                 
-                ctx.save();
-                ctx.translate(px + 8, py + 25 + bounce);
-                ctx.rotate((armSwing * Math.PI / 180));
-                ctx.fillStyle = armGrad;
-                ctx.beginPath();
-                ctx.moveTo(-4, 0);
-                ctx.quadraticCurveTo(-5, 12, -3, 25);
-                ctx.lineTo(3, 25);
-                ctx.quadraticCurveTo(5, 12, 4, 0);
-                ctx.closePath();
-                ctx.fill();
-                ctx.fillStyle = colors.primary;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 8;
-                ctx.beginPath();
-                ctx.arc(0, 27, 5, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-                ctx.restore();
-
-                ctx.save();
-                ctx.translate(px + player.width - 8, py + 25 + bounce);
-                ctx.rotate((-armSwing * Math.PI / 180));
-                ctx.fillStyle = armGrad;
-                ctx.beginPath();
-                ctx.moveTo(-4, 0);
-                ctx.quadraticCurveTo(-5, 12, -3, 25);
-                ctx.lineTo(3, 25);
-                ctx.quadraticCurveTo(5, 12, 4, 0);
-                ctx.closePath();
-                ctx.fill();
-                ctx.fillStyle = colors.primary;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 8;
-                ctx.beginPath();
-                ctx.arc(0, 27, 5, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-                ctx.restore();
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(px - 3, bodyY + 20 + armSwing, 6, 5);
+                ctx.fillRect(px + 47, bodyY + 20 - armSwing, 6, 5);
             }
 
-            // ===== 头部 - 精致可爱风格 =====
+            // ===== 头部 - 像素风格机器人 =====
             const headCX = px + player.width / 2;
             const headCY = py + 12 + bounce;
 
-            // 头部阴影
-            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            // 头部发光边框
+            ctx.strokeStyle = charGlow;
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.ellipse(headCX + 2, headCY + 2, 18, 20, 0, 0, Math.PI * 2);
-            ctx.fill();
-
-            // 头部主体 - 更圆润
-            const headGrad = ctx.createRadialGradient(headCX - 5, headCY - 8, 0, headCX, headCY, 20);
-            headGrad.addColorStop(0, colors.skin);
-            headGrad.addColorStop(0.7, '#c8b8d8');
-            headGrad.addColorStop(1, '#a898b8');
-            ctx.fillStyle = headGrad;
-            ctx.beginPath();
-            ctx.ellipse(headCX, headCY, 18, 20, 0, 0, Math.PI * 2);
-            ctx.fill();
-
-            // ===== 耳朵 =====
-            ctx.fillStyle = colors.skin;
-            ctx.beginPath();
-            ctx.ellipse(headCX - 18, headCY, 4, 6, 0.2, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.ellipse(headCX + 18, headCY, 4, 6, -0.2, 0, Math.PI * 2);
-            ctx.fill();
-
-            // ===== 发型设计 =====
-            if (currentCharacter === 'baba') {
-                // 阿巴巴 - 炫彩短发
-                ctx.fillStyle = '#4a2a6a';
-                ctx.beginPath();
-                ctx.ellipse(headCX, headCY - 8, 20, 16, 0, Math.PI, Math.PI * 2);
-                ctx.fill();
-                
-                const hairGrad = ctx.createLinearGradient(headCX - 18, headCY - 12, headCX + 18, headCY - 12);
-                hairGrad.addColorStop(0, '#ff00ff');
-                hairGrad.addColorStop(0.3, '#ff44aa');
-                hairGrad.addColorStop(0.5, '#aa44ff');
-                hairGrad.addColorStop(0.7, '#44aaff');
-                hairGrad.addColorStop(1, '#00ffff');
-                ctx.fillStyle = hairGrad;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 5;
-                ctx.beginPath();
-                ctx.moveTo(headCX - 16, headCY - 5);
-                ctx.quadraticCurveTo(headCX - 12, headCY + 6, headCX - 6, headCY - 1);
-                ctx.quadraticCurveTo(headCX - 2, headCY + 8, headCX, headCY);
-                ctx.quadraticCurveTo(headCX + 2, headCY + 8, headCX + 6, headCY - 1);
-                ctx.quadraticCurveTo(headCX + 12, headCY + 6, headCX + 16, headCY - 5);
-                ctx.quadraticCurveTo(headCX + 10, headCY - 16, headCX, headCY - 20);
-                ctx.quadraticCurveTo(headCX - 10, headCY - 16, headCX - 16, headCY - 5);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                ctx.fillStyle = 'rgba(255,255,255,0.3)';
-                ctx.beginPath();
-                ctx.ellipse(headCX, headCY - 16, 7, 4, 0, 0, Math.PI * 2);
-                ctx.fill();
-            } else {
-                // 阿小巴 - 马尾发型
-                ctx.fillStyle = '#2a4a6a';
-                ctx.beginPath();
-                ctx.ellipse(headCX, headCY - 8, 18, 14, 0, Math.PI, Math.PI * 2);
-                ctx.fill();
-                
-                const hairGrad = ctx.createLinearGradient(headCX - 16, headCY - 10, headCX + 16, headCY - 10);
-                hairGrad.addColorStop(0, '#00ffff');
-                hairGrad.addColorStop(0.3, '#44ddff');
-                hairGrad.addColorStop(0.5, '#88aaff');
-                hairGrad.addColorStop(0.7, '#aa88ff');
-                hairGrad.addColorStop(1, '#ff44ff');
-                ctx.fillStyle = hairGrad;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 5;
-                ctx.beginPath();
-                ctx.moveTo(headCX - 14, headCY - 4);
-                ctx.quadraticCurveTo(headCX - 10, headCY + 6, headCX - 4, headCY);
-                ctx.quadraticCurveTo(headCX, headCY + 8, headCX + 4, headCY);
-                ctx.quadraticCurveTo(headCX + 10, headCY + 6, headCX + 14, headCY - 4);
-                ctx.quadraticCurveTo(headCX + 8, headCY - 14, headCX, headCY - 18);
-                ctx.quadraticCurveTo(headCX - 8, headCY - 14, headCX - 14, headCY - 4);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                // 马尾
-                const tailWave = player.isJumping ? 8 : Math.sin(player.runFrame * Math.PI / 2) * 5;
-                ctx.fillStyle = '#ff44ff';
-                ctx.shadowColor = '#ff44ff';
-                ctx.shadowBlur = 8;
-                ctx.beginPath();
-                ctx.moveTo(headCX + 12, headCY - 6);
-                ctx.quadraticCurveTo(headCX + 25 + tailWave, headCY - 8, headCX + 28 + tailWave, headCY + 8);
-                ctx.quadraticCurveTo(headCX + 25 + tailWave, headCY + 20, headCX + 12, headCY + 15);
-                ctx.quadraticCurveTo(headCX + 15, headCY + 2, headCX + 12, headCY - 6);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                ctx.fillStyle = 'rgba(255,255,255,0.4)';
-                ctx.beginPath();
-                ctx.ellipse(headCX + 18 + tailWave/2, headCY + 3, 5, 8, 0.3, 0, Math.PI * 2);
-                ctx.fill();
-
-                // 额头标记
-                ctx.fillStyle = colors.primary;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 12;
-                ctx.beginPath();
-                ctx.moveTo(headCX, headCY - 10);
-                ctx.lineTo(headCX - 4, headCY - 4);
-                ctx.lineTo(headCX + 4, headCY - 4);
-                ctx.closePath();
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-
-            // ===== 精致护目镜 =====
-            ctx.fillStyle = '#0a0a1a';
-            ctx.beginPath();
-            ctx.moveTo(headCX - 16, headCY - 3);
-            ctx.quadraticCurveTo(headCX - 18, headCY + 2, headCX - 16, headCY + 6);
-            ctx.lineTo(headCX + 16, headCY + 6);
-            ctx.quadraticCurveTo(headCX + 18, headCY + 2, headCX + 16, headCY - 3);
-            ctx.lineTo(headCX - 16, headCY - 3);
-            ctx.fill();
-
-            const goggleColor = currentCharacter === 'baba' ? '#00ffff' : '#ff44ff';
-            ctx.fillStyle = goggleColor;
-            ctx.shadowColor = goggleColor;
-            ctx.shadowBlur = 15;
-            ctx.beginPath();
-            ctx.ellipse(headCX - 8, headCY + 1, 7, 4, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.ellipse(headCX + 8, headCY + 1, 7, 4, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-
-            ctx.fillStyle = 'rgba(255,255,255,0.6)';
-            ctx.beginPath();
-            ctx.ellipse(headCX - 10, headCY - 1, 2.5, 1.5, -0.3, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.ellipse(headCX + 6, headCY - 1, 2.5, 1.5, -0.3, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(headCX - 16, headCY - 2);
-            ctx.lineTo(headCX + 16, headCY - 2);
+            ctx.arc(headCX, headCY, 22, 0, Math.PI * 2);
             ctx.stroke();
 
-            // ===== 面部细节 =====
-            ctx.strokeStyle = colors.accent;
-            ctx.shadowColor = colors.accent;
-            ctx.shadowBlur = 3;
+            // 头部主体
+            const headGrad = ctx.createRadialGradient(headCX - 8, headCY - 8, 0, headCX, headCY, 22);
+            headGrad.addColorStop(0, charColor);
+            headGrad.addColorStop(1, shadeColor(charColor, -30));
+            ctx.fillStyle = headGrad;
+            ctx.beginPath();
+            ctx.arc(headCX, headCY, 20, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 耳朵/角
+            ctx.fillStyle = charColor;
+            ctx.beginPath();
+            ctx.ellipse(headCX - 18, headCY - 8, 6, 10, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(headCX + 18, headCY - 8, 6, 10, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 耳朵高光
+            ctx.fillStyle = 'rgba(255,255,255,0.3)';
+            ctx.beginPath();
+            ctx.ellipse(headCX - 16, headCY - 10, 3, 5, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(headCX + 16, headCY - 10, 3, 5, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // ===== 眼睛 - 像素风格 =====
+            // 眼白
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.ellipse(headCX - 10, headCY, 9, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(headCX + 10, headCY, 9, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 瞳孔
+            ctx.fillStyle = '#1a1a2e';
+            ctx.beginPath();
+            ctx.arc(headCX - 10, headCY + 1, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(headCX + 10, headCY + 1, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 眼睛高光
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(headCX - 12, headCY - 2, 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(headCX + 8, headCY - 2, 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // ===== 腮红 =====
+            ctx.fillStyle = 'rgba(255,182,193,0.4)';
+            ctx.beginPath();
+            ctx.ellipse(headCX - 16, headCY + 8, 5, 3, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(headCX + 16, headCY + 8, 5, 3, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // ===== 嘴巴 - 微笑 =====
+            ctx.strokeStyle = '#1a1a2e';
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
             ctx.beginPath();
             if (player.isJumping) {
-                ctx.arc(headCX, headCY + 10, 5, 0.2 * Math.PI, 0.8 * Math.PI);
+                ctx.arc(headCX, headCY + 8, 6, 0.2 * Math.PI, 0.8 * Math.PI);
             } else if (player.isSliding) {
-                ctx.moveTo(headCX - 4, headCY + 10);
-                ctx.lineTo(headCX + 4, headCY + 10);
+                ctx.moveTo(headCX - 5, headCY + 8);
+                ctx.lineTo(headCX + 5, headCY + 8);
             } else {
-                ctx.arc(headCX, headCY + 10, 5, 0.15 * Math.PI, 0.85 * Math.PI);
+                ctx.arc(headCX, headCY + 8, 5, 0.15 * Math.PI, 0.85 * Math.PI);
             }
             ctx.stroke();
+
             ctx.shadowBlur = 0;
-
-            ctx.strokeStyle = colors.primary;
-            ctx.lineWidth = 1;
-            ctx.globalAlpha = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(headCX - 12, headCY + 8);
-            ctx.lineTo(headCX - 8, headCY + 12);
-            ctx.moveTo(headCX + 12, headCY + 8);
-            ctx.lineTo(headCX + 8, headCY + 12);
-            ctx.stroke();
-            ctx.globalAlpha = 1;
-
             ctx.restore();
+        }
+
+        function shadeColor(color, percent) {
+            const num = parseInt(color.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+            const G = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amt));
+            const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+            return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
         }
 
         // ========== 绘制障碍物 ==========
@@ -4969,20 +5230,13 @@
 
             ctx.save();
 
-            // 颜色主题
-            const colors = characterType === 'baba' ? {
-                primary: '#ff00ff',
-                secondary: '#00ffff',
-                accent: '#ff6b9d',
-                hair: '#ff00ff',
-                skin: '#e8d4f0'
-            } : {
-                primary: '#00ffff',
-                secondary: '#ff44ff',
-                accent: '#6bfff8',
-                hair: '#00ffff',
-                skin: '#d4e8f0'
-            };
+            const charColor = characterType === 'baba' ? '#4fc3f7' : '#ce93d8';
+            const charGlow = characterType === 'baba' ? '#00ffff' : '#ff00ff';
+            const bellyColor = characterType === 'baba' ? '#b3e5fc' : '#f3e5f5';
+
+            // 发光特效
+            ctx.shadowColor = charGlow;
+            ctx.shadowBlur = 20;
 
             // ===== 阴影效果 =====
             ctx.fillStyle = 'rgba(0,0,0,0.2)';
@@ -4990,364 +5244,129 @@
             ctx.ellipse(px, py + 5, 25, 8, 0, 0, Math.PI * 2);
             ctx.fill();
 
-            // ===== 腿部 - 流畅动画 =====
-            const leg1Angle = Math.sin(legOffset * Math.PI / 2) * 0.5;
-            const leg2Angle = Math.sin(legOffset * Math.PI / 2 + Math.PI) * 0.5;
+            // ===== 腿部 - 像素风格 =====
+            const legOffsetY = Math.sin(legOffset * Math.PI / 2) * 6;
+            ctx.fillStyle = charColor;
+            ctx.fillRect(px - 15, py - 20 + legOffsetY, 12, 20);
+            ctx.fillRect(px + 3, py - 20 - legOffsetY, 12, 20);
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(px - 13, py - 4 + legOffsetY, 8, 4);
+            ctx.fillRect(px + 5, py - 4 - legOffsetY, 8, 4);
 
-            // 左腿
-            ctx.save();
-            ctx.translate(px - 10, py - 5 + bounce);
-            ctx.rotate(leg1Angle);
+            // ===== 身体 - 像素风格 =====
+            const bodyY = py - 55 + bounce;
+            ctx.fillStyle = charColor;
+            ctx.fillRect(px - 20, bodyY, 40, 35);
             
-            // 腿部渐变
-            const legGrad1 = ctx.createLinearGradient(-5, 0, 5, 25);
-            legGrad1.addColorStop(0, '#16213e');
-            legGrad1.addColorStop(0.5, '#1a0a2e');
-            legGrad1.addColorStop(1, '#0d0d1a');
-            ctx.fillStyle = legGrad1;
-            
-            // 腿部形状 - 更圆润
+            ctx.fillStyle = bellyColor;
             ctx.beginPath();
-            ctx.moveTo(-6, 0);
-            ctx.quadraticCurveTo(-7, 12, -5, 25);
-            ctx.lineTo(5, 25);
-            ctx.quadraticCurveTo(7, 12, 6, 0);
-            ctx.closePath();
+            ctx.roundRect(px - 13, bodyY + 10, 26, 20, 8);
             ctx.fill();
-            
-            // 腿部霓虹边线
-            ctx.strokeStyle = colors.secondary;
-            ctx.shadowColor = colors.secondary;
-            ctx.shadowBlur = 6;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(-4, 5);
-            ctx.lineTo(-4, 20);
-            ctx.stroke();
-            ctx.shadowBlur = 0;
-            ctx.restore();
 
-            // 右腿
-            ctx.save();
-            ctx.translate(px + 10, py - 5 + bounce);
-            ctx.rotate(leg2Angle);
-            ctx.fillStyle = legGrad1;
+            // 胸口装饰
+            ctx.fillStyle = charGlow;
             ctx.beginPath();
-            ctx.moveTo(-6, 0);
-            ctx.quadraticCurveTo(-7, 12, -5, 25);
-            ctx.lineTo(5, 25);
-            ctx.quadraticCurveTo(7, 12, 6, 0);
-            ctx.closePath();
-            ctx.fill();
-            ctx.strokeStyle = colors.secondary;
-            ctx.shadowColor = colors.secondary;
-            ctx.shadowBlur = 6;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(4, 5);
-            ctx.lineTo(4, 20);
-            ctx.stroke();
-            ctx.shadowBlur = 0;
-            ctx.restore();
-
-            // ===== 身体 - 流线型战斗服 =====
-            const bodyGrad = ctx.createLinearGradient(px - 20, py - 55 + bounce, px + 20, py - 5 + bounce);
-            bodyGrad.addColorStop(0, '#16213e');
-            bodyGrad.addColorStop(0.3, '#1a0a2e');
-            bodyGrad.addColorStop(0.7, '#0f0f23');
-            bodyGrad.addColorStop(1, '#16213e');
-            ctx.fillStyle = bodyGrad;
-            
-            // 身体形状 - 更圆润流畅
-            ctx.beginPath();
-            ctx.moveTo(px - 18, py - 50 + bounce);
-            ctx.quadraticCurveTo(px - 22, py - 35 + bounce, px - 18, py - 20 + bounce);
-            ctx.lineTo(px - 12, py - 5 + bounce);
-            ctx.lineTo(px + 12, py - 5 + bounce);
-            ctx.lineTo(px + 18, py - 20 + bounce);
-            ctx.quadraticCurveTo(px + 22, py - 35 + bounce, px + 18, py - 50 + bounce);
-            ctx.quadraticCurveTo(px, py - 55 + bounce, px - 18, py - 50 + bounce);
+            ctx.moveTo(px, bodyY + 12);
+            ctx.lineTo(px - 8, bodyY + 22);
+            ctx.lineTo(px + 8, bodyY + 22);
             ctx.closePath();
             ctx.fill();
 
-            // 身体霓虹装饰线
-            ctx.strokeStyle = colors.primary;
-            ctx.shadowColor = colors.primary;
-            ctx.shadowBlur = 10;
-            ctx.lineWidth = 2;
+            // ===== 手臂 - 像素风格 =====
+            const armSwing = Math.sin(charRunFrame * Math.PI / 2) * 8;
+            ctx.fillStyle = charColor;
+            ctx.fillRect(px - 25, bodyY + 5 + armSwing, 10, 20);
+            ctx.fillRect(px + 15, bodyY + 5 - armSwing, 10, 20);
             
-            // 胸口V型线
-            ctx.beginPath();
-            ctx.moveTo(px, py - 48 + bounce);
-            ctx.lineTo(px - 12, py - 35 + bounce);
-            ctx.moveTo(px, py - 48 + bounce);
-            ctx.lineTo(px + 12, py - 35 + bounce);
-            ctx.stroke();
-            
-            // 腰部线条
-            ctx.beginPath();
-            ctx.moveTo(px - 15, py - 12 + bounce);
-            ctx.lineTo(px + 15, py - 12 + bounce);
-            ctx.stroke();
-            
-            // 侧边线条
-            ctx.beginPath();
-            ctx.moveTo(px - 16, py - 45 + bounce);
-            ctx.lineTo(px - 16, py - 25 + bounce);
-            ctx.moveTo(px + 16, py - 45 + bounce);
-            ctx.lineTo(px + 16, py - 25 + bounce);
-            ctx.stroke();
-            ctx.shadowBlur = 0;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(px - 23, bodyY + 20 + armSwing, 6, 5);
+            ctx.fillRect(px + 17, bodyY + 20 - armSwing, 6, 5);
 
-            // ===== 手臂 - 流畅动画 =====
-            const armSwing = Math.sin(charRunFrame * Math.PI / 2) * 15;
-            
-            // 左手臂
-            ctx.save();
-            ctx.translate(px - 18, py - 40 + bounce);
-            ctx.rotate((armSwing * Math.PI / 180));
-            
-            const armGrad = ctx.createLinearGradient(-3, 0, 3, 25);
-            armGrad.addColorStop(0, '#16213e');
-            armGrad.addColorStop(1, '#1a0a2e');
-            ctx.fillStyle = armGrad;
-            ctx.beginPath();
-            ctx.moveTo(-4, 0);
-            ctx.quadraticCurveTo(-5, 12, -3, 25);
-            ctx.lineTo(3, 25);
-            ctx.quadraticCurveTo(5, 12, 4, 0);
-            ctx.closePath();
-            ctx.fill();
-            
-            // 手套
-            ctx.fillStyle = colors.primary;
-            ctx.shadowColor = colors.primary;
-            ctx.shadowBlur = 8;
-            ctx.beginPath();
-            ctx.arc(0, 27, 5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-            ctx.restore();
-
-            // 右手臂
-            ctx.save();
-            ctx.translate(px + 18, py - 40 + bounce);
-            ctx.rotate((-armSwing * Math.PI / 180));
-            ctx.fillStyle = armGrad;
-            ctx.beginPath();
-            ctx.moveTo(-4, 0);
-            ctx.quadraticCurveTo(-5, 12, -3, 25);
-            ctx.lineTo(3, 25);
-            ctx.quadraticCurveTo(5, 12, 4, 0);
-            ctx.closePath();
-            ctx.fill();
-            ctx.fillStyle = colors.primary;
-            ctx.shadowColor = colors.primary;
-            ctx.shadowBlur = 8;
-            ctx.beginPath();
-            ctx.arc(0, 27, 5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-            ctx.restore();
-
-            // ===== 头部 - 精致可爱风格 =====
+            // ===== 头部 - 像素风格机器人 =====
             const headCX = px;
-            const headCY = py - 62 + bounce;
+            const headCY = py - 65 + bounce;
 
-            // 头部阴影
-            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            // 头部发光边框
+            ctx.strokeStyle = charGlow;
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.ellipse(headCX + 2, headCY + 2, 20, 22, 0, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.arc(headCX, headCY, 22, 0, Math.PI * 2);
+            ctx.stroke();
 
-            // 头部主体 - 更圆润
-            const headGrad = ctx.createRadialGradient(headCX - 5, headCY - 8, 0, headCX, headCY, 22);
-            headGrad.addColorStop(0, colors.skin);
-            headGrad.addColorStop(0.7, '#c8b8d8');
-            headGrad.addColorStop(1, '#a898b8');
+            // 头部主体
+            const headGrad = ctx.createRadialGradient(headCX - 8, headCY - 8, 0, headCX, headCY, 22);
+            headGrad.addColorStop(0, charColor);
+            headGrad.addColorStop(1, shadeColor(charColor, -30));
             ctx.fillStyle = headGrad;
             ctx.beginPath();
-            ctx.ellipse(headCX, headCY, 20, 22, 0, 0, Math.PI * 2);
+            ctx.arc(headCX, headCY, 20, 0, Math.PI * 2);
             ctx.fill();
 
-            // ===== 耳朵 =====
-            ctx.fillStyle = colors.skin;
+            // 耳朵/角
+            ctx.fillStyle = charColor;
             ctx.beginPath();
-            ctx.ellipse(headCX - 20, headCY, 5, 7, 0.2, 0, Math.PI * 2);
+            ctx.ellipse(headCX - 18, headCY - 8, 6, 10, -0.3, 0, Math.PI * 2);
             ctx.fill();
             ctx.beginPath();
-            ctx.ellipse(headCX + 20, headCY, 5, 7, -0.2, 0, Math.PI * 2);
+            ctx.ellipse(headCX + 18, headCY - 8, 6, 10, 0.3, 0, Math.PI * 2);
             ctx.fill();
 
-            // ===== 发型设计 =====
-            if (characterType === 'baba') {
-                // 阿巴巴 - 炫彩短发
-                // 底层头发
-                ctx.fillStyle = '#4a2a6a';
-                ctx.beginPath();
-                ctx.ellipse(headCX, headCY - 8, 22, 18, 0, Math.PI, Math.PI * 2);
-                ctx.fill();
-                
-                // 渐变刘海
-                const hairGrad = ctx.createLinearGradient(headCX - 20, headCY - 15, headCX + 20, headCY - 15);
-                hairGrad.addColorStop(0, '#ff00ff');
-                hairGrad.addColorStop(0.3, '#ff44aa');
-                hairGrad.addColorStop(0.5, '#aa44ff');
-                hairGrad.addColorStop(0.7, '#44aaff');
-                hairGrad.addColorStop(1, '#00ffff');
-                ctx.fillStyle = hairGrad;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 5;
-                
-                // 刘海形状 - 更蓬松
-                ctx.beginPath();
-                ctx.moveTo(headCX - 18, headCY - 5);
-                ctx.quadraticCurveTo(headCX - 15, headCY + 8, headCX - 8, headCY - 2);
-                ctx.quadraticCurveTo(headCX - 3, headCY + 10, headCX, headCY);
-                ctx.quadraticCurveTo(headCX + 3, headCY + 10, headCX + 8, headCY - 2);
-                ctx.quadraticCurveTo(headCX + 15, headCY + 8, headCX + 18, headCY - 5);
-                ctx.quadraticCurveTo(headCX + 12, headCY - 18, headCX, headCY - 22);
-                ctx.quadraticCurveTo(headCX - 12, headCY - 18, headCX - 18, headCY - 5);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                // 头顶高光
-                ctx.fillStyle = 'rgba(255,255,255,0.3)';
-                ctx.beginPath();
-                ctx.ellipse(headCX, headCY - 18, 8, 5, 0, 0, Math.PI * 2);
-                ctx.fill();
-            } else {
-                // 阿小巴 - 马尾发型
-                // 底层头发
-                ctx.fillStyle = '#2a4a6a';
-                ctx.beginPath();
-                ctx.ellipse(headCX, headCY - 8, 20, 16, 0, Math.PI, Math.PI * 2);
-                ctx.fill();
-                
-                // 渐变刘海
-                const hairGrad = ctx.createLinearGradient(headCX - 18, headCY - 12, headCX + 18, headCY - 12);
-                hairGrad.addColorStop(0, '#00ffff');
-                hairGrad.addColorStop(0.3, '#44ddff');
-                hairGrad.addColorStop(0.5, '#88aaff');
-                hairGrad.addColorStop(0.7, '#aa88ff');
-                hairGrad.addColorStop(1, '#ff44ff');
-                ctx.fillStyle = hairGrad;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 5;
-                
-                // 刘海
-                ctx.beginPath();
-                ctx.moveTo(headCX - 16, headCY - 4);
-                ctx.quadraticCurveTo(headCX - 12, headCY + 8, headCX - 6, headCY - 1);
-                ctx.quadraticCurveTo(headCX - 2, headCY + 10, headCX, headCY);
-                ctx.quadraticCurveTo(headCX + 2, headCY + 10, headCX + 6, headCY - 1);
-                ctx.quadraticCurveTo(headCX + 12, headCY + 8, headCX + 16, headCY - 4);
-                ctx.quadraticCurveTo(headCX + 10, headCY - 16, headCX, headCY - 20);
-                ctx.quadraticCurveTo(headCX - 10, headCY - 16, headCX - 16, headCY - 4);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                // 马尾 - 动态飘动
-                const tailWave = Math.sin(charRunFrame * Math.PI / 2) * 5;
-                ctx.fillStyle = '#ff44ff';
-                ctx.shadowColor = '#ff44ff';
-                ctx.shadowBlur = 8;
-                ctx.beginPath();
-                ctx.moveTo(headCX + 14, headCY - 6);
-                ctx.quadraticCurveTo(headCX + 28 + tailWave, headCY - 8, headCX + 32 + tailWave, headCY + 10);
-                ctx.quadraticCurveTo(headCX + 28 + tailWave, headCY + 25, headCX + 14, headCY + 20);
-                ctx.quadraticCurveTo(headCX + 18, headCY + 5, headCX + 14, headCY - 6);
-                ctx.fill();
-                
-                // 马尾高光
-                ctx.fillStyle = 'rgba(255,255,255,0.4)';
-                ctx.beginPath();
-                ctx.ellipse(headCX + 22 + tailWave/2, headCY + 5, 6, 10, 0.3, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                // 额头标记 - 精致三角形
-                ctx.fillStyle = colors.primary;
-                ctx.shadowColor = colors.primary;
-                ctx.shadowBlur = 12;
-                ctx.beginPath();
-                ctx.moveTo(headCX, headCY - 12);
-                ctx.lineTo(headCX - 5, headCY - 5);
-                ctx.lineTo(headCX + 5, headCY - 5);
-                ctx.closePath();
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-
-            // ===== 精致护目镜 =====
-            // 护目镜框架
-            ctx.fillStyle = '#0a0a1a';
+            // 耳朵高光
+            ctx.fillStyle = 'rgba(255,255,255,0.3)';
             ctx.beginPath();
-            ctx.moveTo(headCX - 18, headCY - 3);
-            ctx.quadraticCurveTo(headCX - 20, headCY + 2, headCX - 18, headCY + 7);
-            ctx.lineTo(headCX + 18, headCY + 7);
-            ctx.quadraticCurveTo(headCX + 20, headCY + 2, headCX + 18, headCY - 3);
-            ctx.lineTo(headCX - 18, headCY - 3);
-            ctx.fill();
-
-            // 镜片 - 精致发光
-            const goggleColor = characterType === 'baba' ? '#00ffff' : '#ff44ff';
-            
-            // 左镜片
-            ctx.fillStyle = goggleColor;
-            ctx.shadowColor = goggleColor;
-            ctx.shadowBlur = 15;
-            ctx.beginPath();
-            ctx.ellipse(headCX - 9, headCY + 2, 8, 5, 0, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // 右镜片
-            ctx.beginPath();
-            ctx.ellipse(headCX + 9, headCY + 2, 8, 5, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-
-            // 镜片高光
-            ctx.fillStyle = 'rgba(255,255,255,0.6)';
-            ctx.beginPath();
-            ctx.ellipse(headCX - 11, headCY, 3, 2, -0.3, 0, Math.PI * 2);
+            ctx.ellipse(headCX - 16, headCY - 10, 3, 5, -0.3, 0, Math.PI * 2);
             ctx.fill();
             ctx.beginPath();
-            ctx.ellipse(headCX + 7, headCY, 3, 2, -0.3, 0, Math.PI * 2);
+            ctx.ellipse(headCX + 16, headCY - 10, 3, 5, 0.3, 0, Math.PI * 2);
             ctx.fill();
 
-            // 护目镜边框高光
-            ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-            ctx.lineWidth = 1;
+            // ===== 眼睛 - 像素风格 =====
+            // 眼白
+            ctx.fillStyle = '#ffffff';
             ctx.beginPath();
-            ctx.moveTo(headCX - 18, headCY - 2);
-            ctx.lineTo(headCX + 18, headCY - 2);
-            ctx.stroke();
+            ctx.ellipse(headCX - 10, headCY, 9, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(headCX + 10, headCY, 9, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-            // ===== 面部细节 =====
-            // 微笑
-            ctx.strokeStyle = colors.accent;
-            ctx.shadowColor = colors.accent;
-            ctx.shadowBlur = 3;
+            // 瞳孔
+            ctx.fillStyle = '#1a1a2e';
+            ctx.beginPath();
+            ctx.arc(headCX - 10, headCY + 1, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(headCX + 10, headCY + 1, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 眼睛高光
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(headCX - 12, headCY - 2, 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(headCX + 8, headCY - 2, 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // ===== 腮红 =====
+            ctx.fillStyle = 'rgba(255,182,193,0.4)';
+            ctx.beginPath();
+            ctx.ellipse(headCX - 16, headCY + 8, 5, 3, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(headCX + 16, headCY + 8, 5, 3, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // ===== 嘴巴 - 微笑 =====
+            ctx.strokeStyle = '#1a1a2e';
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
             ctx.beginPath();
-            ctx.arc(headCX, headCY + 12, 6, 0.15 * Math.PI, 0.85 * Math.PI);
+            ctx.arc(headCX, headCY + 8, 5, 0.15 * Math.PI, 0.85 * Math.PI);
             ctx.stroke();
+
             ctx.shadowBlur = 0;
-
-            // 面部霓虹纹路
-            ctx.strokeStyle = colors.primary;
-            ctx.lineWidth = 1;
-            ctx.globalAlpha = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(headCX - 15, headCY + 10);
-            ctx.lineTo(headCX - 10, headCY + 15);
-            ctx.moveTo(headCX + 15, headCY + 10);
-            ctx.lineTo(headCX + 10, headCY + 15);
-            ctx.stroke();
-            ctx.globalAlpha = 1;
-
             ctx.restore();
         }
 
@@ -5359,85 +5378,256 @@
             ctx.save();
             ctx.translate(canvas.width / 2, canvas.height / 2);
             
-            const glowGradient = ctx.createRadialGradient(0, 0, 20, 0, 0, 80);
-            glowGradient.addColorStop(0, 'rgba(0, 255, 255, 0.3)');
+            const glowGradient = ctx.createRadialGradient(0, 0, 20, 0, 0, 90);
+            glowGradient.addColorStop(0, 'rgba(0, 255, 255, 0.4)');
+            glowGradient.addColorStop(0.5, 'rgba(0, 255, 255, 0.15)');
             glowGradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
             ctx.fillStyle = glowGradient;
             ctx.beginPath();
-            ctx.arc(0, 0, 80, 0, Math.PI * 2);
+            ctx.arc(0, 0, 90, 0, Math.PI * 2);
             ctx.fill();
             
-            // 身体
-            ctx.fillStyle = '#2a2a4a';
+            // 后腿机械结构
+            ctx.fillStyle = '#1a1a2e';
             ctx.beginPath();
-            ctx.ellipse(0, 10, 45, 25, 0, 0, Math.PI * 2);
+            ctx.moveTo(20, 15);
+            ctx.lineTo(35, 30);
+            ctx.lineTo(40, 55);
+            ctx.lineTo(25, 60);
+            ctx.lineTo(15, 35);
+            ctx.closePath();
             ctx.fill();
             
-            // 机械装甲
+            ctx.beginPath();
+            ctx.moveTo(5, 15);
+            ctx.lineTo(20, 30);
+            ctx.lineTo(25, 55);
+            ctx.lineTo(10, 60);
+            ctx.lineTo(0, 35);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 前腿机械结构
+            ctx.fillStyle = '#1a1a2e';
+            ctx.beginPath();
+            ctx.moveTo(-15, 15);
+            ctx.lineTo(-30, 30);
+            ctx.lineTo(-35, 55);
+            ctx.lineTo(-20, 60);
+            ctx.lineTo(-10, 35);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(-30, 15);
+            ctx.lineTo(-45, 30);
+            ctx.lineTo(-50, 55);
+            ctx.lineTo(-35, 60);
+            ctx.lineTo(-25, 35);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 腿部发光装甲
             ctx.fillStyle = '#00ffff';
-            ctx.globalAlpha = 0.8;
+            ctx.globalAlpha = 0.6;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
+            
             ctx.beginPath();
-            ctx.ellipse(0, 10, 35, 18, 0, 0, Math.PI * 2);
+            ctx.ellipse(-40, 45, 6, 12, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(-20, 45, 6, 12, -0.15, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(15, 45, 6, 12, 0.15, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(35, 45, 6, 12, 0.2, 0, Math.PI * 2);
             ctx.fill();
             
-            // 发光条纹
+            // 爪子发光
             ctx.fillStyle = '#00ffaa';
-            ctx.shadowColor = '#00ffaa';
+            ctx.shadowBlur = 20;
+            for(let i=0; i<4; i++) {
+                const x = -45 + i * 20;
+                ctx.beginPath();
+                ctx.moveTo(x, 62);
+                ctx.lineTo(x+3, 58);
+                ctx.lineTo(x+6, 62);
+                ctx.closePath();
+                ctx.fill();
+            }
+            
+            // 身体主体
+            ctx.fillStyle = '#2a2a4a';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.moveTo(-40, 5);
+            ctx.quadraticCurveTo(-50, -10, -35, -15);
+            ctx.quadraticCurveTo(-20, -20, 10, -18);
+            ctx.quadraticCurveTo(40, -15, 50, 5);
+            ctx.quadraticCurveTo(45, 25, 25, 30);
+            ctx.quadraticCurveTo(-10, 35, -35, 25);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 身体发光装甲层
+            ctx.fillStyle = '#00ffff';
+            ctx.globalAlpha = 0.3;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.moveTo(-35, 8);
+            ctx.quadraticCurveTo(-45, -8, -30, -12);
+            ctx.quadraticCurveTo(-15, -15, 5, -14);
+            ctx.quadraticCurveTo(35, -12, 45, 8);
+            ctx.quadraticCurveTo(40, 22, 20, 26);
+            ctx.quadraticCurveTo(-5, 30, -30, 22);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 胸前发光核心
+            ctx.fillStyle = '#00ffaa';
+            ctx.shadowBlur = 25;
+            ctx.beginPath();
+            ctx.arc(0, 10, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 核心内部齿轮
+            ctx.fillStyle = '#00ffff';
             ctx.shadowBlur = 15;
-            ctx.fillRect(-20, 5, 40, 4);
+            ctx.beginPath();
+            ctx.arc(0, 10, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 身体机械条纹
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(-30, 0);
+            ctx.lineTo(-20, 15);
+            ctx.lineTo(-10, 5);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(10, 0);
+            ctx.lineTo(20, 15);
+            ctx.lineTo(30, 5);
+            ctx.stroke();
             
             // 头部
-            ctx.fillStyle = '#1a1a3a';
+            ctx.fillStyle = '#1a1a2e';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
             ctx.beginPath();
-            ctx.ellipse(-35, -5, 20, 15, -0.3, 0, Math.PI * 2);
+            ctx.moveTo(-45, -10);
+            ctx.quadraticCurveTo(-65, -25, -55, -40);
+            ctx.quadraticCurveTo(-40, -50, -25, -40);
+            ctx.quadraticCurveTo(-20, -30, -30, -15);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 头部发光装甲
+            ctx.fillStyle = '#00ffff';
+            ctx.globalAlpha = 0.5;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.moveTo(-42, -12);
+            ctx.quadraticCurveTo(-60, -28, -52, -38);
+            ctx.quadraticCurveTo(-38, -46, -28, -38);
+            ctx.quadraticCurveTo(-25, -28, -33, -15);
+            ctx.closePath();
             ctx.fill();
             
             // 眼睛
             ctx.fillStyle = '#ff00ff';
             ctx.shadowColor = '#ff00ff';
-            ctx.shadowBlur = 20;
+            ctx.shadowBlur = 25;
             ctx.beginPath();
-            ctx.ellipse(-42, -8, 6, 8, 0, 0, Math.PI * 2);
+            ctx.ellipse(-50, -30, 8, 10, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 眼睛高光
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.ellipse(-48, -32, 3, 4, -0.2, 0, Math.PI * 2);
             ctx.fill();
             
             // 耳朵
             ctx.fillStyle = '#00ffff';
             ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
+            
             ctx.beginPath();
-            ctx.moveTo(-30, -20);
-            ctx.lineTo(-20, -35);
-            ctx.lineTo(-35, -25);
+            ctx.moveTo(-30, -25);
+            ctx.lineTo(-20, -48);
+            ctx.lineTo(-35, -35);
             ctx.closePath();
             ctx.fill();
             
             ctx.beginPath();
-            ctx.moveTo(-45, -20);
-            ctx.lineTo(-40, -35);
-            ctx.lineTo(-50, -25);
+            ctx.moveTo(-45, -28);
+            ctx.lineTo(-38, -52);
+            ctx.lineTo(-52, -38);
             ctx.closePath();
             ctx.fill();
             
-            // 腿部
-            ctx.fillStyle = '#3a3a5a';
-            ctx.fillRect(-30, 25, 10, 35);
-            ctx.fillRect(-15, 25, 10, 35);
-            ctx.fillRect(5, 25, 10, 35);
-            ctx.fillRect(20, 25, 10, 35);
+            // 耳朵内部发光
+            ctx.fillStyle = '#00ffaa';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.moveTo(-28, -30);
+            ctx.lineTo(-24, -42);
+            ctx.lineTo(-32, -35);
+            ctx.closePath();
+            ctx.fill();
             
-            // 爪子
+            ctx.beginPath();
+            ctx.moveTo(-43, -32);
+            ctx.lineTo(-38, -46);
+            ctx.lineTo(-48, -38);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 鼻子/传感器
             ctx.fillStyle = '#00ffff';
-            ctx.fillRect(-32, 55, 14, 8);
-            ctx.fillRect(-17, 55, 14, 8);
-            ctx.fillRect(3, 55, 14, 8);
-            ctx.fillRect(18, 55, 14, 8);
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(-58, -35, 6, 0, Math.PI * 2);
+            ctx.fill();
             
             // 尾巴
             ctx.strokeStyle = '#00ffff';
-            ctx.lineWidth = 6;
+            ctx.lineWidth = 8;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 20;
             ctx.beginPath();
-            ctx.moveTo(35, 10);
-            ctx.quadraticCurveTo(60, 0, 55, -20);
+            ctx.moveTo(45, 8);
+            ctx.bezierCurveTo(65, -5, 75, -20, 70, -35);
             ctx.stroke();
+            
+            // 尾巴发光尖端
+            ctx.fillStyle = '#00ffaa';
+            ctx.beginPath();
+            ctx.arc(70, -35, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 粒子特效
+            ctx.globalAlpha = 0.6;
+            for(let i=0; i<6; i++) {
+                const angle = (Date.now() / 500 + i * 0.5);
+                const x = Math.cos(angle) * 60;
+                const y = Math.sin(angle) * 60 - 10;
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
             
             ctx.globalAlpha = 1;
             ctx.shadowBlur = 0;
