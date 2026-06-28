@@ -38,108 +38,200 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             pointer-events: none;
+            padding: 15px;
+            box-sizing: border-box;
         }
+
+        /* 游戏内顶部卡片容器 */
+        .game-ui-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        /* 左侧统计卡片 */
+        .game-ui-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, rgba(10, 20, 40, 0.9), rgba(5, 10, 25, 0.95));
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 10px 18px;
+            box-shadow: 
+                0 0 15px rgba(0, 255, 255, 0.15),
+                inset 0 0 20px rgba(0, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
         #score {
-            position: absolute;
-            top: 15px; left: 20px;
+            font-size: 22px;
+            font-weight: bold;
             color: #00ffff;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-        }
-        #coins {
-            position: absolute;
-            top: 15px; right: 20px;
-            color: #FFD700;
-            font-size: 22px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            text-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        #diamonds {
-            position: absolute;
-            top: 50px; right: 20px;
-            color: #9b59b6;
-            font-size: 22px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(155, 89, 182, 0.8);
+
+        #score::before {
+            content: "📍";
+            font-size: 20px;
+        }
+
+        /* 右侧货币卡片组 */
+        .game-ui-right {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .currency-card {
+            background: linear-gradient(135deg, rgba(10, 20, 40, 0.9), rgba(5, 10, 25, 0.95));
+            border-radius: 10px;
+            padding: 8px 14px;
             display: flex;
             align-items: center;
             gap: 8px;
+            backdrop-filter: blur(8px);
+            min-width: 120px;
+            justify-content: flex-end;
         }
-        #highScore {
-            position: absolute;
-            top: 85px; right: 20px;
-            color: #ff00ff;
-            font-size: 16px;
+
+        .currency-card.coins {
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+        }
+
+        .currency-card.diamonds {
+            border: 1px solid rgba(155, 89, 182, 0.4);
+            box-shadow: 0 0 12px rgba(155, 89, 182, 0.1);
+        }
+
+        .currency-card.total {
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.08);
+            padding: 6px 12px;
+            min-width: 130px;
+        }
+
+        .currency-card.highscore {
+            border: 1px solid rgba(255, 0, 255, 0.4);
+            box-shadow: 0 0 12px rgba(255, 0, 255, 0.1);
+        }
+
+        .currency-value {
+            font-size: 18px;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
         }
-        #totalCoins {
-            position: absolute;
-            top: 50px; right: 150px;
+
+        #coins .currency-value {
             color: #FFD700;
-            font-size: 16px;
-            font-weight: bold;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
         }
+
+        #diamonds .currency-value {
+            color: #bb77dd;
+            text-shadow: 0 0 10px rgba(155, 89, 182, 0.6);
+        }
+
+        #totalCoins {
+            font-size: 14px;
+            color: #FFD700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+
+        #highScore {
+            font-size: 14px;
+            color: #ff66ff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+        }
+
+        .coin-icon {
+            width: 22px; height: 22px;
+            background: radial-gradient(circle at 30% 30%, #FFE066, #FFD700, #CC9900);
+            border-radius: 50%;
+            border: 2px solid #CC9900;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+            flex-shrink: 0;
+        }
+
+        .diamond-icon {
+            width: 18px; height: 18px;
+            background: radial-gradient(circle at 30% 30%, #e0e0ff, #9b59b6, #6c3483);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            border: 2px solid #9b59b6;
+            box-shadow: 0 0 8px rgba(155, 89, 182, 0.5);
+            flex-shrink: 0;
+        }
+
+        /* 道具状态栏 */
         #powerupStatus {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 45px;
+            left: 15px;
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            gap: 8px;
         }
+
         .powerup-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 12px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
+            padding: 8px 14px;
+            background: rgba(5, 10, 25, 0.9);
+            border-radius: 25px;
             border: 2px solid;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
-        .powerup-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
+
         .powerup-item.hidden { display: none; }
-        #dashStatus { border-color: #00ffff; }
-        #dashStatus .powerup-icon { filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.6)); }
-        #dashStatus .powerup-label, #dashStatus .powerup-time { color: #00ffff; }
-        #shieldStatus { border-color: #ff44ff; }
-        #shieldStatus .powerup-icon { filter: drop-shadow(0 0 4px rgba(255, 68, 255, 0.6)); }
-        #shieldStatus .powerup-label, #shieldStatus .powerup-time { color: #ff44ff; }
-        #magnetStatus { border-color: #ffaa00; }
-        #magnetStatus .powerup-icon { filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.6)); }
-        #magnetStatus .powerup-label, #magnetStatus .powerup-time { color: #ffaa00; }
+
+        .powerup-item:hover {
+            transform: translateY(-3px);
+        }
+
+        #dashStatus { 
+            border-color: #00ffff; 
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+        #dashStatus .powerup-icon { filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.8)); }
+        #dashStatus .powerup-label, #dashStatus .powerup-time { color: #00ffff; text-shadow: 0 0 8px rgba(0, 255, 255, 0.6); }
+
+        #shieldStatus { 
+            border-color: #ff44ff; 
+            box-shadow: 0 0 15px rgba(255, 68, 255, 0.3);
+        }
+        #shieldStatus .powerup-icon { filter: drop-shadow(0 0 6px rgba(255, 68, 255, 0.8)); }
+        #shieldStatus .powerup-label, #shieldStatus .powerup-time { color: #ff44ff; text-shadow: 0 0 8px rgba(255, 68, 255, 0.6); }
+
+        #magnetStatus { 
+            border-color: #ffaa00; 
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+        }
+        #magnetStatus .powerup-icon { filter: drop-shadow(0 0 6px rgba(255, 170, 0, 0.8)); }
+        #magnetStatus .powerup-label, #magnetStatus .powerup-time { color: #ffaa00; text-shadow: 0 0 8px rgba(255, 170, 0, 0.6); }
+
         .powerup-icon {
             flex-shrink: 0;
         }
+
         .powerup-label {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
         }
+
         .powerup-time {
             font-size: 12px;
-            opacity: 0.8;
-        }
-        .coin-icon {
-            width: 24px; height: 24px;
-            background: radial-gradient(circle at 30% 30%, #FFE066, #FFD700, #CC9900);
-            border-radius: 50%;
-            border: 2px solid #CC9900;
-        }
-        .diamond-icon {
-            width: 20px; height: 20px;
-            background: radial-gradient(circle at 30% 30%, #e0e0ff, #9b59b6, #6c3483);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            border: 2px solid #9b59b6;
+            opacity: 0.9;
         }
         #menu {
             position: absolute;
@@ -1000,83 +1092,156 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: rgba(5, 5, 16, 0.98);
+            background: linear-gradient(180deg, rgba(5, 5, 16, 0.98) 0%, rgba(10, 10, 30, 0.96) 50%, rgba(5, 5, 16, 0.98) 100%);
             pointer-events: auto;
             z-index: 100;
+            overflow: hidden;
+        }
+        #charSelectModal::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 60%);
+            pointer-events: none;
         }
         #charSelectModal.hidden { display: none; }
         .char-select-header {
             width: 100%;
             text-align: center;
-            padding: 20px 0;
+            padding: 30px 0;
+            position: relative;
+            z-index: 1;
         }
         .char-select-title {
-            font-size: 32px;
+            font-size: 38px;
             font-weight: bold;
             color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            text-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.8),
+                0 0 40px rgba(0, 255, 255, 0.4),
+                0 0 60px rgba(0, 255, 255, 0.2);
+            letter-spacing: 4px;
+            position: relative;
+        }
+        .char-select-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; left: 50%;
+            transform: translateX(-50%);
+            width: 200px; height: 3px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            border-radius: 2px;
         }
         .char-select-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
         }
         .char-select-cards {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         .char-select-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.4);
+            padding: 28px 24px;
+            background: linear-gradient(145deg, rgba(10, 20, 40, 0.8), rgba(5, 10, 20, 0.9));
             border: 3px solid rgba(0, 255, 255, 0.2);
-            border-radius: 20px;
+            border-radius: 24px;
             cursor: pointer;
-            transition: all 0.3s;
-            width: 200px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 220px;
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .char-select-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.08), transparent);
+            transition: left 0.6s;
+        }
+        .char-select-card:hover::before {
+            left: 150%;
         }
         .char-select-card:hover {
+            transform: translateY(-8px) scale(1.05);
             border-color: rgba(0, 255, 255, 0.6);
-            background: rgba(0, 255, 255, 0.08);
-            transform: scale(1.08);
+            box-shadow: 
+                0 15px 40px rgba(0, 255, 255, 0.2),
+                0 0 0 1px rgba(0, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
         .char-select-card.active {
+            background: linear-gradient(145deg, rgba(0, 40, 40, 0.6), rgba(0, 20, 30, 0.8));
             border-color: #00ffff;
-            background: rgba(0, 255, 255, 0.15);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            box-shadow: 
+                0 0 40px rgba(0, 255, 255, 0.4),
+                0 0 80px rgba(0, 255, 255, 0.2),
+                inset 0 0 30px rgba(0, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        .char-select-card.active::after {
+            content: '';
+            position: absolute;
+            top: -2px; right: -2px;
+            width: 20px; height: 20px;
+            background: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ffff;
         }
         .char-select-card canvas {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         .char-card-info {
             text-align: center;
+            width: 100%;
         }
         .char-card-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: #fff;
-            margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+            letter-spacing: 2px;
         }
         .char-select-card.active .char-card-name {
             color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            text-shadow: 
+                0 0 15px rgba(0, 255, 255, 0.8),
+                0 0 30px rgba(0, 255, 255, 0.4);
         }
         .char-card-desc {
             font-size: 14px;
             color: #FFD700;
-            background: rgba(255, 215, 0, 0.15);
-            padding: 4px 15px;
-            border-radius: 12px;
-            margin-bottom: 8px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+            padding: 6px 18px;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            display: inline-block;
         }
         .char-card-detail {
-            font-size: 12px;
-            color: #888;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.4;
         }
 
         #mountSelectModal, #dailyCheckinModal {
@@ -1087,26 +1252,154 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(5, 5, 16, 0.98);
+            background: linear-gradient(135deg, rgba(5, 5, 16, 0.98), rgba(10, 10, 30, 0.95));
             pointer-events: auto;
             z-index: 100;
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid rgba(155, 89, 182, 0.3);
+            padding: 25px;
+            border-radius: 24px;
+            border: 2px solid rgba(155, 89, 182, 0.4);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(155, 89, 182, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            max-width: 95vw;
         }
         #mountSelectModal.hidden, #dailyCheckinModal.hidden { display: none; }
 
+        #mountSelectModal .char-select-header {
+            padding: 15px 0;
+        }
+        #mountSelectModal .char-select-title {
+            font-size: 32px;
+            color: #9b59b6;
+            text-shadow: 0 0 20px rgba(155, 89, 182, 0.8);
+        }
+        #mountSelectModal .char-select-title::after {
+            background: linear-gradient(90deg, transparent, #9b59b6, transparent);
+        }
+        #mountSelectModal .char-select-content {
+            padding: 15px;
+        }
+        #mountSelectModal .char-select-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        #mountSelectModal .char-select-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 18px 14px;
+            background: linear-gradient(145deg, rgba(20, 10, 35, 0.8), rgba(10, 5, 20, 0.9));
+            border: 2px solid rgba(155, 89, 182, 0.3);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 155px;
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        #mountSelectModal .char-select-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(155, 89, 182, 0.08), transparent);
+            transition: left 0.6s;
+        }
+        #mountSelectModal .char-select-card:hover::before {
+            left: 150%;
+        }
+        #mountSelectModal .char-select-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(155, 89, 182, 0.7);
+            box-shadow: 
+                0 12px 30px rgba(155, 89, 182, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+        #mountSelectModal .char-select-card.active {
+            background: linear-gradient(145deg, rgba(40, 20, 60, 0.7), rgba(20, 10, 40, 0.8));
+            border-color: #9b59b6;
+            box-shadow: 
+                0 0 30px rgba(155, 89, 182, 0.4),
+                0 0 60px rgba(155, 89, 182, 0.2),
+                inset 0 0 20px rgba(155, 89, 182, 0.1);
+            transform: translateY(-4px);
+        }
+        #mountSelectModal .char-select-card.active::after {
+            content: '';
+            position: absolute;
+            top: -2px; right: -2px;
+            width: 18px; height: 18px;
+            background: #9b59b6;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #9b59b6;
+        }
+        #mountSelectModal .char-select-card canvas {
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            width: 110px;
+            height: 110px;
+        }
+        #mountSelectModal .char-card-info {
+            text-align: center;
+            width: 100%;
+        }
+        #mountSelectModal .char-card-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        #mountSelectModal .char-select-card.active .char-card-name {
+            color: #9b59b6;
+            text-shadow: 0 0 12px rgba(155, 89, 182, 0.8);
+        }
+        #mountSelectModal .char-card-price {
+            font-size: 13px;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        #mountSelectModal .char-card-desc {
+            font-size: 12px;
+            color: #00ffff;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
+            padding: 5px 12px;
+            border-radius: 12px;
+            margin-bottom: 6px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            display: inline-block;
+        }
+        #mountSelectModal .char-card-detail {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.3;
+        }
         .mount-preview {
-            width: 150px;
-            height: 150px;
+            width: 110px;
+            height: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         }
         .mount-icon-no {
-            font-size: 48px;
-            color: #666;
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.3);
         }
         .char-card-price {
             font-size: 14px;
@@ -1116,66 +1409,179 @@
         }
 
         .checkin-calendar {
-            text-align: center;
-            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
         }
         .checkin-week {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         .checkin-day {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 255, 255, 0.1);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            border-radius: 10px;
-            color: #00ffff;
-            font-size: 12px;
+            background: linear-gradient(145deg, #0a1628, #050a15);
+            border: 2px solid rgba(0, 255, 255, 0.25);
+            border-radius: 50%;
+            color: rgba(0, 255, 255, 0.8);
+            font-size: 11px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .checkin-day::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        .checkin-day:hover::before {
+            left: 150%;
         }
         .checkin-day:hover {
-            background: rgba(0, 255, 255, 0.2);
-            transform: scale(1.1);
+            transform: translateY(-5px) scale(1.1);
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 
+                0 8px 25px rgba(0, 255, 255, 0.3),
+                0 0 0 1px rgba(0, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .checkin-day.weekend {
-            background: rgba(255, 107, 107, 0.1);
+            background: linear-gradient(145deg, #1a0a15, #0d050a);
             border-color: rgba(255, 107, 107, 0.3);
-            color: #ff6b6b;
+            color: rgba(255, 107, 107, 0.8);
+        }
+        .checkin-day.weekend:hover {
+            border-color: rgba(255, 107, 107, 0.8);
+            box-shadow: 
+                0 8px 25px rgba(255, 107, 107, 0.3),
+                0 0 0 1px rgba(255, 107, 107, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .checkin-day.checked {
-            background: rgba(81, 207, 102, 0.3);
+            background: linear-gradient(145deg, #0a2815, #05150a);
             border-color: #51cf66;
             color: #51cf66;
+            box-shadow: 
+                0 0 20px rgba(81, 207, 102, 0.4),
+                inset 0 0 10px rgba(81, 207, 102, 0.2);
+        }
+        .checkin-day.checked::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #51cf66;
+            border-radius: 50%;
+            bottom: 5px;
+            box-shadow: 0 0 10px #51cf66;
         }
         .checkin-day.today {
             border-color: #ffd700;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            box-shadow: 
+                0 0 25px rgba(255, 215, 0, 0.5),
+                inset 0 0 15px rgba(255, 215, 0, 0.1);
+            animation: todayPulse 2s ease-in-out infinite;
+        }
+        @keyframes todayPulse {
+            0%, 100% { 
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.1);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), inset 0 0 25px rgba(255, 215, 0, 0.2);
+                transform: scale(1.05);
+            }
         }
         .checkin-info {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+            width: 100%;
+            max-width: 380px;
         }
         .checkin-reward {
-            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(30, 25, 10, 0.95), rgba(50, 40, 15, 0.9));
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 16px;
+            font-size: 19px;
+            font-weight: bold;
             color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            box-shadow: 
+                0 8px 25px rgba(255, 215, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .checkin-reward::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+        }
+        .checkin-reward .reward-icon {
+            font-size: 28px;
+            animation: rewardFloat 2s ease-in-out infinite;
+        }
+        @keyframes rewardFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(10deg); }
         }
         .checkin-streak {
-            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, rgba(10, 35, 50, 0.95), rgba(15, 50, 70, 0.9));
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: bold;
             color: #00ffff;
+            text-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
+            box-shadow: 
+                0 6px 20px rgba(0, 255, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .checkin-bonus {
-            font-size: 14px;
-            color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.1);
-            padding: 8px 16px;
-            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, rgba(45, 15, 40, 0.95), rgba(65, 20, 55, 0.9));
+            border: 2px solid rgba(238, 130, 238, 0.4);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #ee82ee;
+            text-shadow: 0 0 12px rgba(238, 130, 238, 0.7);
+            box-shadow: 
+                0 6px 20px rgba(238, 130, 238, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         /* 通用按钮基础样式 */
@@ -1815,42 +2221,238 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             background: rgba(5, 5, 16, 0.95);
             pointer-events: auto;
+            z-index: 100;
         }
         #pause.hidden { display: none; }
-        .pause-title {
-            font-size: 48px;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-            margin-bottom: 30px;
+
+        .pause-card {
+            background: linear-gradient(145deg, rgba(10, 30, 50, 0.95), rgba(5, 15, 30, 0.98));
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 30px 50px;
+            width: 90%;
+            max-width: 950px;
+            min-height: 380px;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.25),
+                0 10px 50px rgba(0, 0, 0, 0.6),
+                inset 0 0 80px rgba(0, 255, 255, 0.05);
+            animation: fadeInScale 0.4s ease-out;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
         }
-        .pause-score {
-            font-size: 32px;
-            color: #ffd700;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-            margin-bottom: 15px;
+
+        .pause-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .pause-title {
+            font-size: 36px;
+            color: #00ffff;
+            text-shadow: 
+                0 0 25px rgba(0, 255, 255, 0.8),
+                0 0 50px rgba(0, 255, 255, 0.4);
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .pause-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+        }
+
+        .pause-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .pause-stats {
+            display: flex;
+            flex-direction: row;
+            gap: 18px;
+            flex: 1;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        .pause-stat-item {
+            flex: 1;
+            min-width: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(0, 255, 255, 0.08);
+            padding: 20px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .pause-stat-icon {
+            font-size: 36px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 255, 255, 0.15);
+            border-radius: 50%;
+        }
+
+        .pause-stat-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pause-stat-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 5px;
+        }
+
+        .pause-stat-value {
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .pause-powerups {
+            min-width: 180px;
+            max-width: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 25px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(79, 195, 247, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .pause-powerups-title {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
             font-weight: bold;
         }
+
+        .pause-powerups-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .pause-powerup-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .pause-powerup-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .pause-powerup-name {
+            font-size: 13px;
+            color: #ffffff;
+            flex: 1;
+            text-align: left;
+        }
+
+        .pause-powerup-time {
+            font-size: 12px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
         .pause-new-record {
-            font-size: 28px;
-            color: #ff44ff;
-            text-shadow: 0 0 20px rgba(255, 68, 255, 0.8);
-            margin-bottom: 25px;
+            font-size: 20px;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            margin-top: 15px;
             font-weight: bold;
             animation: pulse 0.5s ease-in-out infinite alternate;
+            text-align: center;
             display: none;
         }
+
         .pause-new-record.show {
             display: block;
         }
+
         .pause-buttons {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .pause-buttons .btn {
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-resume {
+            background: linear-gradient(135deg, #00d4aa, #009688) !important;
+            border: 1px solid rgba(0, 212, 170, 0.5) !important;
+            color: #ffffff !important;
+        }
+
+        .btn-resume:hover {
+            box-shadow: 0 0 30px rgba(0, 212, 170, 0.6) !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-quit {
+            background: linear-gradient(135deg, #434343, #000000) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .btn-quit:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px);
         }
 
         /* 倒计时 */
@@ -1883,41 +2485,45 @@
     <div id="gameContainer">
         <canvas id="gameCanvas" width="900" height="500"></canvas>
         <div id="ui">
-            <div id="score">距离: 0</div>
-            <div id="coins">
-                <div class="coin-icon"></div>
-                <span id="coinCount">0</span>
+            <!-- 顶部UI容器 -->
+            <div class="game-ui-top">
+                <!-- 左侧：距离卡片 -->
+                <div class="game-ui-left">
+                    <div class="game-card" id="score">距离: 0</div>
+                </div>
+                
+                <!-- 右侧：货币卡片组 -->
+                <div class="game-ui-right">
+                    <div class="currency-card coins" id="coins">
+                        <span class="currency-value" id="coinCount">0</span>
+                        <div class="coin-icon"></div>
+                    </div>
+                    <div class="currency-card diamonds" id="diamonds">
+                        <span class="currency-value" id="diamondCount">0</span>
+                        <div class="diamond-icon"></div>
+                    </div>
+                </div>
             </div>
-            <div id="diamonds">
-                <div class="diamond-icon"></div>
-                <span id="diamondCount">0</span>
-            </div>
-            <div id="totalCoins">总资产: 0</div>
-            <div id="highScore">最高分: 0</div>
+            
+            <!-- 道具状态栏 -->
             <div id="powerupStatus">
                 <div id="dashStatus" class="powerup-item hidden">
-                    <svg class="powerup-icon" viewBox="0 0 40 24" width="24" height="14">
+                    <svg class="powerup-icon" viewBox="0 0 24 24" width="18" height="18">
                         <defs>
-                            <linearGradient id="rocketGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#e0e0e0;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#b0b0b0;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="fireGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#0088aa;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#004455;stop-opacity:0" />
-                            </linearGradient>
+                            <radialGradient id="dashGlow2" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0" />
+                            </radialGradient>
                         </defs>
-                        <ellipse cx="8" cy="12" rx="6" ry="5" fill="url(#rocketGrad)" />
-                        <rect x="8" y="7" width="18" height="10" fill="url(#rocketGrad)" />
-                        <polygon points="26,7 32,12 26,17" fill="url(#rocketGrad)" />
-                        <ellipse cx="26" cy="12" rx="4" ry="3" fill="#888" opacity="0.5" />
-                        <ellipse cx="29" cy="12" rx="8" ry="4" fill="url(#fireGrad)" />
-                        <ellipse cx="32" cy="12" rx="5" ry="2.5" fill="#00ffff" opacity="0.8" />
-                        <ellipse cx="34" cy="12" rx="3" ry="1.5" fill="#ffffff" opacity="0.6" />
-                        <line x1="10" y1="10" x2="20" y2="10" stroke="#888" stroke-width="1" />
-                        <line x1="10" y1="14" x2="20" y2="14" stroke="#888" stroke-width="1" />
+                        <circle cx="12" cy="12" r="10" fill="url(#dashGlow2)" />
+                        <circle cx="12" cy="12" r="8" stroke="#ffffff" stroke-width="1.5" fill="none" />
+                        <path d="M12,4 L9,12 L10,12 L8,20 L16,12 L14,12 L16,4 Z" fill="#00ffff" />
+                    </svg>
+                    <svg class="powerup-icon" viewBox="0 0 24 24" width="14" height="14">
+                        <ellipse cx="8" cy="8" rx="4" ry="5" fill="#ffaa00" />
+                        <ellipse cx="16" cy="8" rx="4" ry="5" fill="#ffaa00" />
+                        <rect x="8" y="10" width="8" height="2" fill="#ffaa00" />
+                        <path d="M8,10 Q12,16 16,10" stroke="#ffaa00" stroke-width="3" fill="none" stroke-linecap="round" />
                     </svg>
                     <span class="powerup-label">冲刺</span>
                     <span class="powerup-time">30s</span>
@@ -2171,9 +2777,16 @@
                         <div class="checkin-day weekend" data-day="6">周日</div>
                     </div>
                     <div class="checkin-info">
-                        <div class="checkin-reward">今日奖励：<span id="todayReward">50</span> 💎</div>
-                        <div class="checkin-streak">连续签到：<span id="checkinStreak">0</span> 天</div>
+                        <div class="checkin-reward">
+                            <span class="reward-icon">💎</span>
+                            <span>今日奖励：<span id="todayReward">50</span> 💎</span>
+                        </div>
+                        <div class="checkin-streak">
+                            <span>🔥</span>
+                            <span>连续签到：<span id="checkinStreak">0</span> 天</span>
+                        </div>
                         <div class="checkin-bonus">
+                            <span>🎉</span>
                             <span id="checkinBonus">连续签到一周额外获得 500 💎</span>
                         </div>
                     </div>
@@ -2290,46 +2903,41 @@
                 <h3>✨ 道具系统</h3>
                 <div class="rules-modal-powerups">
                     <div class="rules-modal-powerup">
-                        <svg class="icon" viewBox="0 0 40 24" width="45" height="27">
+                        <svg class="icon" viewBox="0 0 40 40" width="45" height="45">
                             <defs>
-                                <linearGradient id="rocketGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#e0e0e0;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#b0b0b0;stop-opacity:1" />
-                                </linearGradient>
-                                <linearGradient id="fireGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#0088aa;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#004455;stop-opacity:0" />
-                                </linearGradient>
+                                <radialGradient id="dashGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.4" />
+                                    <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0" />
+                                </radialGradient>
                             </defs>
-                            <ellipse cx="8" cy="12" rx="6" ry="5" fill="url(#rocketGrad2)" />
-                            <rect x="8" y="7" width="18" height="10" fill="url(#rocketGrad2)" />
-                            <polygon points="26,7 32,12 26,17" fill="url(#rocketGrad2)" />
-                            <ellipse cx="26" cy="12" rx="4" ry="3" fill="#888" opacity="0.5" />
-                            <ellipse cx="29" cy="12" rx="8" ry="4" fill="url(#fireGrad2)" />
-                            <ellipse cx="32" cy="12" rx="5" ry="2.5" fill="#00ffff" opacity="0.8" />
-                            <ellipse cx="34" cy="12" rx="3" ry="1.5" fill="#ffffff" opacity="0.6" />
-                            <line x1="10" y1="10" x2="20" y2="10" stroke="#888" stroke-width="1" />
-                            <line x1="10" y1="14" x2="20" y2="14" stroke="#888" stroke-width="1" />
+                            <circle cx="20" cy="20" r="18" fill="url(#dashGlow)" />
+                            <circle cx="20" cy="20" r="15" stroke="#ffffff" stroke-width="2" fill="none" />
+                            <path d="M20,8 L15,20 L17,20 L14,32 L26,20 L23,20 L26,8 Z" fill="#00ffff" />
+                            <path d="M20,10 L16,20 L24,10 Z" fill="#ffffff" opacity="0.6" />
                         </svg>
                         <div class="info">
                             <div class="name" style="color:#00ffff">冲刺道具</div>
-                            <div class="desc">持续30秒，玩家在空中加速冲刺，速度增加400%，期间免疫所有障碍物，周围有青色冲击波特效</div>
+                        <div class="desc">持续30秒，玩家在空中加速冲刺，速度增加400%，期间免疫所有障碍物，同时拥有磁铁效果自动吸附金币和钻石，周围有青色冲击波特效</div>
                         </div>
                     </div>
                     <div class="rules-modal-powerup">
-                        <svg class="icon" viewBox="0 0 24 24" width="45" height="45">
+                        <svg class="icon" viewBox="0 0 40 40" width="45" height="45">
                             <defs>
-                                <linearGradient id="shieldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <radialGradient id="shieldGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#ff44ff;stop-opacity:0.4" />
+                                    <stop offset="100%" style="stop-color:#ff44ff;stop-opacity:0" />
+                                </radialGradient>
+                                <linearGradient id="shieldGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#ff88ff;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#aa44aa;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#662266;stop-opacity:1" />
                                 </linearGradient>
                             </defs>
-                            <path d="M12 2L2 9v5c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V9L12 2z" fill="url(#shieldGrad2)" />
-                            <path d="M12 6c2.2 0 4 1.8 4 4v3c0 2.2-1.8 4-4 4s-4-1.8-4-4V10c0-2.2 1.8-4 4-4z" fill="rgba(255,255,255,0.2)" />
-                            <path d="M12 8v8" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.8" />
-                            <path d="M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+                            <circle cx="20" cy="20" r="18" fill="url(#shieldGlow)" />
+                            <polygon points="20,3 28,10 28,29 20,36 12,29 12,10" stroke="#ffffff" stroke-width="2" fill="none" />
+                            <polygon points="20,5 26,12 26,28 20,34 14,28 14,12" fill="url(#shieldGrad3)" />
+                            <polygon points="20,10 24,20 20,30 16,20" fill="rgba(255,255,255,0.2)" />
+                            <line x1="20" y1="8" x2="20" y2="32" stroke="#ffffff" stroke-width="1.5" opacity="0.6" />
+                            <line x1="12" y1="20" x2="28" y2="20" stroke="#ffffff" stroke-width="1.5" opacity="0.6" />
                         </svg>
                         <div class="info">
                             <div class="name" style="color:#ff44ff">护盾道具</div>
@@ -2337,27 +2945,26 @@
                         </div>
                     </div>
                     <div class="rules-modal-powerup">
-                        <svg class="icon" viewBox="0 0 24 24" width="45" height="45">
+                        <svg class="icon" viewBox="0 0 40 40" width="45" height="45">
                             <defs>
-                                <linearGradient id="magnetGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <radialGradient id="magnetGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#ffaa00;stop-opacity:0.4" />
+                                    <stop offset="100%" style="stop-color:#ffaa00;stop-opacity:0" />
+                                </radialGradient>
+                                <linearGradient id="magnetGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
                                     <stop offset="0%" style="stop-color:#ffcc00;stop-opacity:1" />
                                     <stop offset="50%" style="stop-color:#ffaa00;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#cc8800;stop-opacity:1" />
                                 </linearGradient>
                             </defs>
-                            <ellipse cx="12" cy="6" rx="5" ry="4" fill="url(#magnetGrad2)" />
-                            <rect x="9" y="6" width="6" height="12" fill="url(#magnetGrad2)" />
-                            <ellipse cx="12" cy="18" rx="5" ry="4" fill="url(#magnetGrad2)" />
-                            <circle cx="12" cy="6" r="2" fill="#fff" opacity="0.6" />
-                            <circle cx="12" cy="18" r="2" fill="#fff" opacity="0.6" />
-                            <line x1="7" y1="6" x2="4" y2="3" stroke="#ffaa00" stroke-width="2" opacity="0.6" />
-                            <line x1="17" y1="6" x2="20" y2="3" stroke="#ffaa00" stroke-width="2" opacity="0.6" />
-                            <line x1="7" y1="18" x2="4" y2="21" stroke="#ffaa00" stroke-width="2" opacity="0.6" />
-                            <line x1="17" y1="18" x2="20" y2="21" stroke="#ffaa00" stroke-width="2" opacity="0.6" />
-                            <circle cx="3" cy="3" r="1" fill="#ffaa00" opacity="0.8" />
-                            <circle cx="21" cy="3" r="1" fill="#ffaa00" opacity="0.8" />
-                            <circle cx="3" cy="21" r="1" fill="#ffaa00" opacity="0.8" />
-                            <circle cx="21" cy="21" r="1" fill="#ffaa00" opacity="0.8" />
+                            <circle cx="20" cy="20" r="18" fill="url(#magnetGlow)" />
+                            <circle cx="20" cy="20" r="15" stroke="#ffffff" stroke-width="2" fill="none" />
+                            <ellipse cx="12" cy="14" rx="6" ry="8" fill="url(#magnetGrad3)" />
+                            <ellipse cx="28" cy="14" rx="6" ry="8" fill="url(#magnetGrad3)" />
+                            <rect x="12" y="17" width="16" height="4" fill="url(#magnetGrad3)" />
+                            <path d="M12,17 Q20,28 28,17" stroke="url(#magnetGrad3)" stroke-width="5" fill="none" stroke-linecap="round" />
+                            <text x="12" y="14" font-size="8" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" font-weight="bold">N</text>
+                            <text x="28" y="14" font-size="8" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" font-weight="bold">S</text>
                         </svg>
                         <div class="info">
                             <div class="name" style="color:#ffaa00">磁铁道具</div>
@@ -2476,12 +3083,58 @@
         </div>
 
         <div id="pause" class="hidden">
-            <div class="pause-title">游戏暂停</div>
-            <div class="pause-score" id="pauseScore">当前分数: 0</div>
-            <div class="pause-new-record" id="pauseNewRecord">🎉 新纪录！🎉</div>
-            <div class="pause-buttons">
-                <button class="btn btn-secondary" id="resumeBtn">继续游戏</button>
-                <button class="btn" id="quitBtn">退出游戏</button>
+            <div class="pause-card">
+                <div class="pause-header">
+                    <div class="pause-title">⏸️ 游戏暂停</div>
+                    <div class="pause-subtitle">点击「继续游戏」恢复挑战</div>
+                </div>
+                
+                <div class="pause-main">
+                    <div class="pause-stats">
+                        <div class="pause-stat-item">
+                            <div class="pause-stat-icon">⭐</div>
+                            <div class="pause-stat-info">
+                                <div class="pause-stat-label">当前分数</div>
+                                <div class="pause-stat-value" id="pauseScore">0</div>
+                            </div>
+                        </div>
+                        <div class="pause-stat-item">
+                            <div class="pause-stat-icon">📍</div>
+                            <div class="pause-stat-info">
+                                <div class="pause-stat-label">当前距离</div>
+                                <div class="pause-stat-value" id="pauseDistance">0</div>
+                            </div>
+                        </div>
+                        <div class="pause-stat-item">
+                            <div class="pause-stat-icon">💰</div>
+                            <div class="pause-stat-info">
+                                <div class="pause-stat-label">本局金币</div>
+                                <div class="pause-stat-value" id="pauseCoins">0</div>
+                            </div>
+                        </div>
+                        <div class="pause-stat-item">
+                            <div class="pause-stat-icon">💎</div>
+                            <div class="pause-stat-info">
+                                <div class="pause-stat-label">本局钻石</div>
+                                <div class="pause-stat-value" id="pauseDiamonds">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pause-powerups">
+                        <div class="pause-powerups-title">✨ 生效道具</div>
+                        <div class="pause-powerups-list" id="pausePowerupsList">
+                            <div style="color: rgba(255,255,255,0.4); font-size: 12px;">暂无激活道具</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pause-new-record" id="pauseNewRecord">🎉 新纪录！🎉</div>
+                
+                <div class="pause-buttons">
+                    <button class="btn btn-resume" id="resumeBtn">继续游戏</button>
+                    <button class="btn btn-quit" id="quitBtn">退出游戏</button>
+                </div>
             </div>
         </div>
 
@@ -2621,6 +3274,22 @@
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
+        
+        // 扩展 CanvasRenderingContext2D 添加 roundRect 方法
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+                if (w < 2 * r) r = w / 2;
+                if (h < 2 * r) r = h / 2;
+                this.beginPath();
+                this.moveTo(x + r, y);
+                this.arcTo(x + w, y, x + w, y + h, r);
+                this.arcTo(x + w, y + h, x, y + h, r);
+                this.arcTo(x, y + h, x, y, r);
+                this.arcTo(x, y, x + w, y, r);
+                this.closePath();
+                return this;
+            };
+        }
         const scoreEl = document.getElementById('score');
         const coinCountEl = document.getElementById('coinCount');
         const diamondCountEl = document.getElementById('diamondCount');
@@ -3527,7 +4196,8 @@
             x: 150, y: 350, width: 50, height: 70,
             velocityY: 0, isJumping: false, isSliding: false,
             jumpCount: 0, slideTimer: 0, jumpHeld: false,
-            runFrame: 0, runTimer: 0, isDoubleJumping: false, doubleJumpFrame: 0
+            runFrame: 0, runTimer: 0, isDoubleJumping: false, doubleJumpFrame: 0,
+            jumpBuffered: false, jumpBufferTimer: 0
         };
 
         let obstacles = [], coins = [], powerups = [], diamonds = [];
@@ -3586,9 +4256,9 @@
             });
         }
 
-        const GRAVITY = 0.8;
-        const JUMP_FORCE = -16;
-        const MAX_FALL_SPEED = 18;
+        const GRAVITY = 0.7;
+        const JUMP_FORCE = -15;
+        const MAX_FALL_SPEED = 15;
 
         function init() {
             // 更新游玩次数和最后游玩时间
@@ -3606,6 +4276,8 @@
             player.jumpCount = 0;
             player.isDoubleJumping = false;
             player.doubleJumpFrame = 0;
+            player.jumpBuffered = false;
+            player.jumpBufferTimer = 0;
             currentLane = 0;
             obstacles = [];
             coins = [];
@@ -3628,6 +4300,9 @@
             activePowerups.dash.active = false;
             activePowerups.shield.active = false;
             activePowerups.magnet.active = false;
+            inRewardTrack = false;
+            rewardTrackTimeLeft = 0;
+            lastRewardTrackDistance = 0;
             
             // 应用坐骑效果
             const mount = mounts[currentMount];
@@ -3656,8 +4331,8 @@
             scoreEl.textContent = `距离: ${Math.floor(distance)}`;
             coinCountEl.textContent = coinCount;
             diamondCountEl.textContent = diamondCount;
-            totalCoinsEl.textContent = `总资产: ${totalCoins}`;
-            highScoreEl.textContent = `最高分: ${highScore}`;
+            if (totalCoinsEl) totalCoinsEl.textContent = `总资产: ${totalCoins}`;
+            if (highScoreEl) highScoreEl.textContent = `最高分: ${highScore}`;
             totalCoinsOverEl.textContent = totalCoins;
             reviveCostEl.textContent = reviveCost;
             updateStaminaDisplay();
@@ -3746,8 +4421,8 @@
         }
 
         function spawnObstacle() {
-            const minGap = Math.max(350 - speed * 2, 200);
-            const maxGap = Math.max(500 - speed * 3, 300);
+            const minGap = Math.max(400 - speed * 1.5, 250);
+            const maxGap = Math.max(600 - speed * 2, 400);
             if (lastObstacleX > canvas.width) return;
             const gap = minGap + Math.random() * (maxGap - minGap);
             
@@ -3792,8 +4467,8 @@
         }
 
         function spawnCoins() {
-            const minGap = Math.max(150 - speed, 50);
-            const maxGap = Math.max(280 - speed * 2, 100);
+            const minGap = Math.max(180 - speed * 0.8, 80);
+            const maxGap = Math.max(320 - speed * 1.2, 150);
             if (lastCoinX > canvas.width) return;
             const gap = minGap + Math.random() * (maxGap - minGap);
             
@@ -3953,6 +4628,15 @@
         }
 
         function updatePlayer() {
+            // 更新跳跃缓冲计时器
+            if (player.jumpBuffered) {
+                player.jumpBufferTimer -= 16.67; // 大约每帧16.67ms (60fps)
+                if (player.jumpBufferTimer <= 0) {
+                    player.jumpBuffered = false;
+                    player.jumpBufferTimer = 0;
+                }
+            }
+            
             player.runTimer++;
             if (player.runTimer > 5) {
                 player.runFrame = (player.runFrame + 1) % 4;
@@ -4025,6 +4709,16 @@
                         player.isDoubleJumping = false;
                         currentLane = lane;
                         landed = true;
+                        
+                        // 跳跃缓冲：落地时如果有跳跃缓冲，立即执行跳跃
+                        if (player.jumpBuffered && player.jumpBufferTimer > 0) {
+                            player.isJumping = true;
+                            player.velocityY = JUMP_FORCE;
+                            player.jumpHeld = true;
+                            player.jumpCount = 1;
+                            player.jumpBuffered = false;
+                            player.jumpBufferTimer = 0;
+                        }
                         break;
                     }
                 }
@@ -4041,7 +4735,7 @@
             if (gameState !== GameState.PLAYING) return;
             
             const now = Date.now();
-            const baseSpeed = Math.min(15, 8 + distance * 0.002);
+            const baseSpeed = Math.min(12, 8 + distance * 0.001);
             const dashSpeed = activePowerups.dash.active ? baseSpeed * 4 : baseSpeed;
             speed = dashSpeed;
             distance += speed * 0.1;
@@ -4107,14 +4801,16 @@
             coins.forEach(coin => { 
                 coin.x -= speed; 
                 coin.angle += 0.1;
-                if (activePowerups.magnet.active) {
+                if (activePowerups.magnet.active || activePowerups.dash.active) {
                     const playerCenter = { x: player.x + player.width / 2, y: player.y + player.height / 2 };
                     const dx = playerCenter.x - coin.x;
                     const dy = playerCenter.y - coin.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 200) {
-                        coin.x += dx * 0.08;
-                        coin.y += dy * 0.08;
+                    const magnetRange = activePowerups.dash.active ? 250 : 200;
+                    const magnetSpeed = activePowerups.dash.active ? 0.12 : 0.08;
+                    if (dist < magnetRange) {
+                        coin.x += dx * magnetSpeed;
+                        coin.y += dy * magnetSpeed;
                     }
                 }
             });
@@ -4216,7 +4912,7 @@
                     const dx = playerCenter.x - coin.x;
                     const dy = playerCenter.y - coin.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    const collectRadius = activePowerups.magnet.active ? 80 : 25;
+                    const collectRadius = (activePowerups.magnet.active || activePowerups.dash.active) ? 80 : 25;
                     if (dist < coin.radius + collectRadius) {
                         coin.collected = true;
                         coinCount++;
@@ -4231,7 +4927,7 @@
                     const dx = playerCenter.x - diamond.x;
                     const dy = playerCenter.y - diamond.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    const collectRadius = activePowerups.magnet.active ? 80 : 25;
+                    const collectRadius = (activePowerups.magnet.active || activePowerups.dash.active) ? 80 : 25;
                     if (dist < diamond.radius + collectRadius) {
                         diamond.collected = true;
                         diamondCount++;
@@ -4423,7 +5119,10 @@
 
         // ========== 绘制玩家 - 赛博朋克风格 ==========
         function drawPlayer() {
-            const px = player.x, py = player.y;
+            const px = player.x;
+            // 如果有坐骑，玩家位置向上调整
+            const mountOffset = currentMount !== 'none' ? -10 : 0;
+            const py = player.y + mountOffset;
             ctx.save();
             const bounce = player.isJumping ? 0 : Math.sin(player.runFrame * Math.PI / 2) * 3;
             const legOffset = player.isJumping ? 0 : player.runFrame;
@@ -4438,28 +5137,34 @@
             ctx.shadowBlur = 20;
 
             // ===== 阴影效果 =====
-            ctx.fillStyle = 'rgba(0,0,0,0.2)';
-            ctx.beginPath();
-            ctx.ellipse(px + player.width / 2, py + player.height + 5, 22, 8, 0, 0, Math.PI * 2);
-            ctx.fill();
+            // 有坐骑时阴影由坐骑绘制，不绘制玩家阴影
+            if (currentMount === 'none') {
+                ctx.fillStyle = 'rgba(0,0,0,0.2)';
+                ctx.beginPath();
+                ctx.ellipse(px + player.width / 2, py + player.height + 5, 22, 8, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
 
             // ===== 腿部 - 像素风格 =====
-            if (player.isSliding) {
-                ctx.fillStyle = charColor;
-                ctx.fillRect(px + 8, py + player.height - 12, 34, 12);
-            } else if (player.isJumping) {
-                ctx.fillStyle = charColor;
-                ctx.fillRect(px + 8, py + player.height - 20, 12, 20);
-                ctx.fillRect(px + 30, py + player.height - 20, 12, 20);
-            } else {
-                const legOffsetY = Math.sin(legOffset * Math.PI / 2) * 6;
-                ctx.fillStyle = charColor;
-                ctx.fillRect(px + 8, py + player.height - 20 + legOffsetY, 12, 20);
-                ctx.fillRect(px + 30, py + player.height - 20 - legOffsetY, 12, 20);
-                
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(px + 10, py + player.height - 4 + legOffsetY, 8, 4);
-                ctx.fillRect(px + 32, py + player.height - 4 - legOffsetY, 8, 4);
+            // 有坐骑时隐藏腿部（被坐骑遮挡）
+            if (currentMount === 'none') {
+                if (player.isSliding) {
+                    ctx.fillStyle = charColor;
+                    ctx.fillRect(px + 8, py + player.height - 12, 34, 12);
+                } else if (player.isJumping) {
+                    ctx.fillStyle = charColor;
+                    ctx.fillRect(px + 8, py + player.height - 20, 12, 20);
+                    ctx.fillRect(px + 30, py + player.height - 20, 12, 20);
+                } else {
+                    const legOffsetY = Math.sin(legOffset * Math.PI / 2) * 6;
+                    ctx.fillStyle = charColor;
+                    ctx.fillRect(px + 8, py + player.height - 20 + legOffsetY, 12, 20);
+                    ctx.fillRect(px + 30, py + player.height - 20 - legOffsetY, 12, 20);
+                    
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(px + 10, py + player.height - 4 + legOffsetY, 8, 4);
+                    ctx.fillRect(px + 32, py + player.height - 4 - legOffsetY, 8, 4);
+                }
             }
 
             // ===== 身体 - 像素风格 =====
@@ -4601,6 +5306,386 @@
             const G = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amt));
             const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
             return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+        }
+
+        // ========== 绘制坐骑（游戏局内）==========
+        function drawMountInGame() {
+            if (currentMount === 'none') return;
+            
+            const px = player.x;
+            const py = player.y;
+            const mountOffsetY = 15; // 坐骑向下偏移
+            
+            ctx.save();
+            
+            if (currentMount === 'alpha') {
+                // 绘制阿尔法机械战狼
+                drawMountAlphaGame(px - 10, py + mountOffsetY);
+            } else if (currentMount === 'beta') {
+                // 绘制贝塔悬浮摩托
+                drawMountBetaGame(px - 15, py + mountOffsetY + 5);
+            }
+            
+            ctx.restore();
+        }
+
+        // 绘制阿尔法机械战狼（游戏内缩小版）
+        function drawMountAlphaGame(mx, my) {
+            const scale = 0.6;
+            ctx.save();
+            ctx.translate(mx + 30, my + 35);
+            ctx.scale(scale, scale);
+            
+            // 发光背景
+            ctx.fillStyle = 'rgba(0, 255, 255, 0.2)';
+            ctx.beginPath();
+            ctx.arc(0, 0, 50, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 腿部
+            ctx.fillStyle = '#1a1a2e';
+            ctx.beginPath();
+            ctx.moveTo(-25, 15);
+            ctx.lineTo(-40, 30);
+            ctx.lineTo(-45, 45);
+            ctx.lineTo(-30, 50);
+            ctx.lineTo(-20, 30);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(20, 15);
+            ctx.lineTo(35, 30);
+            ctx.lineTo(40, 45);
+            ctx.lineTo(25, 50);
+            ctx.lineTo(15, 30);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 腿部发光装甲
+            ctx.fillStyle = '#00ffff';
+            ctx.globalAlpha = 0.6;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.ellipse(-35, 35, 5, 10, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(30, 35, 5, 10, 0.2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 身体主体
+            ctx.fillStyle = '#2a2a4a';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.moveTo(-30, 5);
+            ctx.quadraticCurveTo(-40, -10, -25, -15);
+            ctx.quadraticCurveTo(0, -18, 40, -12);
+            ctx.quadraticCurveTo(45, 5, 30, 25);
+            ctx.quadraticCurveTo(-10, 30, -25, 20);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 身体发光装甲
+            ctx.fillStyle = '#00ffff';
+            ctx.globalAlpha = 0.3;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.moveTo(-25, 8);
+            ctx.quadraticCurveTo(-35, -8, -20, -12);
+            ctx.quadraticCurveTo(5, -15, 35, -8);
+            ctx.quadraticCurveTo(40, 8, 25, 22);
+            ctx.quadraticCurveTo(-5, 25, -20, 18);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 胸前核心
+            ctx.fillStyle = '#00ffaa';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(0, 10, 12, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#00ffff';
+            ctx.beginPath();
+            ctx.arc(0, 10, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 头部
+            ctx.fillStyle = '#1a1a2e';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.moveTo(-35, -10);
+            ctx.quadraticCurveTo(-55, -25, -45, -35);
+            ctx.quadraticCurveTo(-30, -42, -20, -32);
+            ctx.quadraticCurveTo(-15, -22, -25, -12);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 眼睛
+            ctx.fillStyle = '#ff00ff';
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.ellipse(-40, -25, 6, 8, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 眼睛高光
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.ellipse(-38, -27, 2, 3, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 耳朵
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.moveTo(-22, -18);
+            ctx.lineTo(-15, -38);
+            ctx.lineTo(-28, -25);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(-35, -20);
+            ctx.lineTo(-30, -40);
+            ctx.lineTo(-42, -28);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 尾巴
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 6;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.moveTo(35, 8);
+            ctx.bezierCurveTo(50, -5, 60, -15, 55, -28);
+            ctx.stroke();
+            
+            // 尾巴尖端发光
+            ctx.fillStyle = '#00ffaa';
+            ctx.beginPath();
+            ctx.arc(55, -28, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.restore();
+        }
+
+        // 绘制贝塔悬浮摩托（游戏内缩小版）
+        function drawMountBetaGame(mx, my) {
+            const scale = 0.55;
+            ctx.save();
+            ctx.translate(mx + 40, my + 40);
+            ctx.scale(scale, scale);
+            
+            // 悬浮光效底座
+            ctx.fillStyle = '#9b59b6';
+            ctx.globalAlpha = 0.3;
+            ctx.shadowColor = '#9b59b6';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.ellipse(-20, 35, 18, 7, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(15, 35, 20, 7, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 引擎尾焰
+            ctx.fillStyle = '#ff00ff';
+            ctx.globalAlpha = 0.8;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 20;
+            const flameHeight = 12 + Math.sin(Date.now() / 100) * 4;
+            ctx.beginPath();
+            ctx.moveTo(-28, 18);
+            ctx.lineTo(-35, 18 + flameHeight);
+            ctx.lineTo(-20, 18 + flameHeight * 0.8);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.fillStyle = '#ff66ff';
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(-28, 18);
+            ctx.lineTo(-32, 18 + flameHeight * 0.7);
+            ctx.lineTo(-24, 18 + flameHeight * 0.5);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 后轮
+            ctx.strokeStyle = '#ff00ff';
+            ctx.lineWidth = 4;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(30, 18, 15, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // 后轮发光环
+            ctx.fillStyle = '#ff00ff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(30, 18, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 后轮辐条
+            ctx.strokeStyle = '#ff66ff';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 8;
+            for(let i=0; i<6; i++) {
+                const angle = i * Math.PI / 3;
+                ctx.beginPath();
+                ctx.moveTo(30 + Math.cos(angle) * 6, 18 + Math.sin(angle) * 6);
+                ctx.lineTo(30 + Math.cos(angle) * 13, 18 + Math.sin(angle) * 13);
+                ctx.stroke();
+            }
+            
+            // 前轮
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 3;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 12;
+            ctx.beginPath();
+            ctx.arc(-30, 18, 12, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // 前轮发光环
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(-30, 18, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 前轮辐条
+            ctx.strokeStyle = '#00ccff';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 6;
+            for(let i=0; i<5; i++) {
+                const angle = i * Math.PI / 2.5;
+                ctx.beginPath();
+                ctx.moveTo(-30 + Math.cos(angle) * 5, 18 + Math.sin(angle) * 5);
+                ctx.lineTo(-30 + Math.cos(angle) * 10, 18 + Math.sin(angle) * 10);
+                ctx.stroke();
+            }
+            
+            // 车身主体
+            ctx.fillStyle = '#2a1a4a';
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.moveTo(-45, 12);
+            ctx.quadraticCurveTo(-45, -15, -20, -25);
+            ctx.quadraticCurveTo(5, -28, 35, -15);
+            ctx.quadraticCurveTo(45, -3, 40, 16);
+            ctx.lineTo(20, 22);
+            ctx.lineTo(-10, 22);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 车身发光装甲
+            ctx.fillStyle = '#9b59b6';
+            ctx.globalAlpha = 0.5;
+            ctx.shadowColor = '#9b59b6';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.moveTo(-40, 14);
+            ctx.quadraticCurveTo(-40, -12, -15, -20);
+            ctx.quadraticCurveTo(5, -23, 30, -10);
+            ctx.quadraticCurveTo(38, 0, 35, 18);
+            ctx.lineTo(15, 20);
+            ctx.lineTo(-8, 20);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 车身发光条纹
+            ctx.fillStyle = '#ff00ff';
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 18;
+            ctx.fillRect(-35, -6, 70, 3);
+            
+            ctx.fillStyle = '#ff66ff';
+            ctx.shadowBlur = 10;
+            ctx.fillRect(-30, 4, 60, 2);
+            
+            // 车头灯光
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(-38, -8, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 驾驶座发光边框
+            ctx.strokeStyle = '#ff00ff';
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.moveTo(-3, -12);
+            ctx.lineTo(-3, 4);
+            ctx.lineTo(28, 4);
+            ctx.lineTo(24, -10);
+            ctx.closePath();
+            ctx.stroke();
+            
+            // 把手
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 10;
+            
+            ctx.beginPath();
+            ctx.moveTo(-6, -6);
+            ctx.lineTo(-12, -12);
+            ctx.lineTo(-20, -15);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(20, -6);
+            ctx.lineTo(26, -12);
+            ctx.lineTo(34, -15);
+            ctx.stroke();
+            
+            // 把手握把
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(-20, -15, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(34, -15, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 仪表盘
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(6, -6, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 仪表盘指针
+            ctx.strokeStyle = '#ff00ff';
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#ff00ff';
+            ctx.shadowBlur = 8;
+            ctx.save();
+            ctx.translate(6, -6);
+            ctx.rotate(Math.PI / 4);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(4, 0);
+            ctx.stroke();
+            ctx.restore();
+            
+            ctx.restore();
         }
 
         // ========== 绘制障碍物 ==========
@@ -4772,35 +5857,269 @@
                 const pulse = Math.sin(powerup.pulse) * 0.3 + 0.7;
                 const cx = powerup.x + powerup.width / 2;
                 const cy = powerup.y + powerup.height / 2;
-                const size = powerup.width / 2 * pulse;
+                const size = powerup.width / 2;
 
-                ctx.shadowColor = type.glowColor;
-                ctx.shadowBlur = 15 * pulse;
-
-                const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, size);
-                grad.addColorStop(0, '#ffffff');
-                grad.addColorStop(0.3, type.color);
-                grad.addColorStop(1, type.color);
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(cx, cy, size, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.strokeStyle = '#ffffff';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(cx, cy, size - 3, 0, Math.PI * 2);
-                ctx.stroke();
-
-                ctx.fillStyle = '#ffffff';
-                ctx.shadowBlur = 0;
-                ctx.font = 'bold 16px Arial';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(type.icon, cx, cy);
+                if (powerup.type === 'dash') {
+                    drawDashPowerup(cx, cy, size, pulse);
+                } else if (powerup.type === 'shield') {
+                    drawShieldPowerup(cx, cy, size, pulse);
+                } else if (powerup.type === 'magnet') {
+                    drawMagnetPowerup(cx, cy, size, pulse);
+                }
 
                 ctx.restore();
             });
+        }
+
+        function drawDashPowerup(cx, cy, size, pulse) {
+            const glowSize = size * 1.3 * pulse;
+            
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 25 * pulse;
+            
+            // 背景发光圆
+            const outerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowSize);
+            outerGrad.addColorStop(0, 'rgba(0, 255, 255, 0.4)');
+            outerGrad.addColorStop(0.5, 'rgba(0, 255, 255, 0.15)');
+            outerGrad.addColorStop(1, 'rgba(0, 255, 255, 0)');
+            ctx.fillStyle = outerGrad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, glowSize, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 旋转外圆环
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(Date.now() * 0.003);
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.6 + Math.sin(Date.now() * 0.005) * 0.3;
+            ctx.beginPath();
+            ctx.arc(0, 0, size * 1.1, -Math.PI / 4, Math.PI * 1.5);
+            ctx.stroke();
+            ctx.restore();
+            
+            // 内圆环
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 3;
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.arc(cx, cy, size * 0.9, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // 运动线条背景
+            ctx.strokeStyle = 'rgba(0, 255, 255, 0.5)';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3 + Date.now() * 0.003;
+                const len = size * 0.6;
+                ctx.beginPath();
+                ctx.moveTo(cx + Math.cos(angle) * size * 0.5, cy + Math.sin(angle) * size * 0.5);
+                ctx.lineTo(cx + Math.cos(angle) * size * 0.5 + Math.cos(angle) * len, cy + Math.sin(angle) * size * 0.5 + Math.sin(angle) * len);
+                ctx.stroke();
+            }
+            
+            // 闪电形状
+            ctx.fillStyle = '#00ffff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - size * 0.6);
+            ctx.lineTo(cx - size * 0.3, cy);
+            ctx.lineTo(cx - size * 0.1, cy);
+            ctx.lineTo(cx - size * 0.2, cy + size * 0.6);
+            ctx.lineTo(cx + size * 0.2, cy);
+            ctx.lineTo(cx + size * 0.1, cy);
+            ctx.lineTo(cx + size * 0.3, cy - size * 0.6);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 闪电高光
+            ctx.fillStyle = '#ffffff';
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - size * 0.5);
+            ctx.lineTo(cx - size * 0.15, cy);
+            ctx.lineTo(cx + size * 0.15, cy - size * 0.5);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.shadowBlur = 0;
+        }
+
+        function drawShieldPowerup(cx, cy, size, pulse) {
+            const glowSize = size * 1.3 * pulse;
+            
+            ctx.shadowColor = '#ff44ff';
+            ctx.shadowBlur = 25 * pulse;
+            
+            // 背景发光圆
+            const outerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowSize);
+            outerGrad.addColorStop(0, 'rgba(255, 68, 255, 0.4)');
+            outerGrad.addColorStop(0.5, 'rgba(255, 68, 255, 0.15)');
+            outerGrad.addColorStop(1, 'rgba(255, 68, 255, 0)');
+            ctx.fillStyle = outerGrad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, glowSize, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 旋转外圆环
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(-Date.now() * 0.002);
+            ctx.strokeStyle = '#ff44ff';
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.6 + Math.sin(Date.now() * 0.004) * 0.3;
+            ctx.beginPath();
+            ctx.arc(0, 0, size * 1.15, Math.PI / 4, -Math.PI * 1.5);
+            ctx.stroke();
+            ctx.restore();
+            
+            // 六边形外框
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 3;
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI / 2;
+                const x = cx + Math.cos(angle) * size * 0.85;
+                const y = cy + Math.sin(angle) * size * 0.85;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+            
+            // 六边形盾牌主体
+            const shieldGrad = ctx.createLinearGradient(cx - size, cy - size, cx + size, cy + size);
+            shieldGrad.addColorStop(0, '#ff88ff');
+            shieldGrad.addColorStop(0.5, '#aa44aa');
+            shieldGrad.addColorStop(1, '#662266');
+            ctx.fillStyle = shieldGrad;
+            ctx.globalAlpha = 0.8;
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI / 2;
+                const x = cx + Math.cos(angle) * size * 0.75;
+                const y = cy + Math.sin(angle) * size * 0.75;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fill();
+            
+            // 盾牌内部菱形
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - size * 0.4);
+            ctx.lineTo(cx + size * 0.35, cy);
+            ctx.lineTo(cx, cy + size * 0.4);
+            ctx.lineTo(cx - size * 0.35, cy);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 盾牌十字装饰
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - size * 0.5);
+            ctx.lineTo(cx, cy + size * 0.5);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(cx - size * 0.5, cy);
+            ctx.lineTo(cx + size * 0.5, cy);
+            ctx.stroke();
+            
+            ctx.shadowBlur = 0;
+        }
+
+        function drawMagnetPowerup(cx, cy, size, pulse) {
+            const glowSize = size * 1.3 * pulse;
+            
+            ctx.shadowColor = '#ffaa00';
+            ctx.shadowBlur = 25 * pulse;
+            
+            // 背景发光圆
+            const outerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowSize);
+            outerGrad.addColorStop(0, 'rgba(255, 170, 0, 0.4)');
+            outerGrad.addColorStop(0.5, 'rgba(255, 170, 0, 0.15)');
+            outerGrad.addColorStop(1, 'rgba(255, 170, 0, 0)');
+            ctx.fillStyle = outerGrad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, glowSize, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 旋转外圆环
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(Date.now() * 0.004);
+            ctx.strokeStyle = '#ffaa00';
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.6 + Math.sin(Date.now() * 0.006) * 0.3;
+            ctx.beginPath();
+            ctx.arc(0, 0, size * 1.1, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+            
+            // 内圆环
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 3;
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.arc(cx, cy, size * 0.9, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // 磁场线条
+            ctx.strokeStyle = 'rgba(255, 170, 0, 0.4)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
+            const fieldTime = Date.now() * 0.002;
+            for (let i = 0; i < 4; i++) {
+                const angle = i * Math.PI / 2 + fieldTime;
+                ctx.beginPath();
+                ctx.arc(cx, cy, size * 0.6 + Math.sin(fieldTime + i) * 5, angle, angle + Math.PI);
+                ctx.stroke();
+            }
+            ctx.setLineDash([]);
+            
+            // U形磁铁主体
+            const magnetGrad = ctx.createLinearGradient(cx - size, cy, cx + size, cy);
+            magnetGrad.addColorStop(0, '#ffcc00');
+            magnetGrad.addColorStop(0.5, '#ffaa00');
+            magnetGrad.addColorStop(1, '#cc8800');
+            ctx.fillStyle = magnetGrad;
+            
+            // 左磁极
+            ctx.beginPath();
+            ctx.ellipse(cx - size * 0.3, cy - size * 0.3, size * 0.2, size * 0.25, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 右磁极
+            ctx.beginPath();
+            ctx.ellipse(cx + size * 0.3, cy - size * 0.3, size * 0.2, size * 0.25, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 连接桥
+            ctx.fillRect(cx - size * 0.3, cy - size * 0.05, size * 0.6, size * 0.1);
+            
+            // 底部曲线
+            ctx.beginPath();
+            ctx.moveTo(cx - size * 0.3, cy - size * 0.05);
+            ctx.quadraticCurveTo(cx, cy + size * 0.5, cx + size * 0.3, cy - size * 0.05);
+            ctx.strokeStyle = magnetGrad;
+            ctx.lineWidth = size * 0.15;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            
+            // 磁极标记
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 10px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('N', cx - size * 0.3, cy - size * 0.3);
+            ctx.fillText('S', cx + size * 0.3, cy - size * 0.3);
+            
+            ctx.shadowBlur = 0;
         }
 
         function drawPowerupEffects() {
@@ -4837,6 +6156,37 @@
                 ctx.beginPath();
                 ctx.arc(px + player.width / 2, py, 25, 0, Math.PI * 2);
                 ctx.fill();
+                
+                // 冲刺期间的磁铁效果 - 金币吸引线条
+                const magnetLineCount = 6;
+                for (let i = 0; i < magnetLineCount; i++) {
+                    const angle = (i / magnetLineCount) * Math.PI * 2 + Date.now() * 0.003;
+                    const innerDist = 35;
+                    const outerDist = 70 + Math.sin(Date.now() * 0.005 + i) * 15;
+                    const startX = px + Math.cos(angle) * innerDist;
+                    const startY = py + Math.sin(angle) * innerDist;
+                    const endX = px + Math.cos(angle) * outerDist;
+                    const endY = py + Math.sin(angle) * outerDist;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(endX, endY);
+                    ctx.lineTo(startX, startY);
+                    ctx.strokeStyle = 'rgba(255, 170, 0, 0.5)';
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                    
+                    // 吸引粒子
+                    const particleProgress = (Date.now() / 300 + i) % 1;
+                    const particleX = endX + (startX - endX) * particleProgress;
+                    const particleY = endY + (startY - endY) * particleProgress;
+                    ctx.beginPath();
+                    ctx.arc(particleX, particleY, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffaa00';
+                    ctx.shadowColor = '#ffaa00';
+                    ctx.shadowBlur = 10;
+                    ctx.fill();
+                }
 
                 ctx.restore();
             }
@@ -4893,11 +6243,12 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBackground();
             drawGround();
+            drawMountInGame(); // 先绘制坐骑
             drawCoins();
             drawDiamonds();
             drawPowerups();
             drawObstacles();
-            drawPlayer();
+            drawPlayer(); // 再绘制玩家（骑在坐骑上）
             drawPowerupEffects();
             drawGameUI();
         }
@@ -4911,27 +6262,43 @@
                 const progress = (distance - lastRewardTrackDistance) / REWARD_TRACK_DISTANCE;
                 const clampedProgress = Math.min(1, Math.max(0, progress));
                 
+                // 进度条背景卡片
+                ctx.fillStyle = 'rgba(5, 10, 25, 0.9)';
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.4)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.roundRect(canvas.width / 2 - 160, canvas.height - 55, 320, 45, 10);
+                ctx.fill();
+                ctx.stroke();
+                
                 // 进度条背景
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
-                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 40, 300, 12);
+                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 45, 300, 16);
                 
                 // 进度条填充
                 const gradient = ctx.createLinearGradient(canvas.width / 2 - 150, 0, canvas.width / 2 + 150, 0);
                 gradient.addColorStop(0, '#00ffff');
+                gradient.addColorStop(0.5, '#00ddff');
                 gradient.addColorStop(1, '#ff00ff');
                 ctx.fillStyle = gradient;
-                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 40, 300 * clampedProgress, 12);
+                ctx.shadowColor = '#00ffff';
+                ctx.shadowBlur = 10;
+                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 45, 300 * clampedProgress, 16);
+                ctx.shadowBlur = 0;
                 
                 // 进度条边框
-                ctx.strokeStyle = '#ffffff';
-                ctx.lineWidth = 1;
-                ctx.strokeRect(canvas.width / 2 - 150, canvas.height - 40, 300, 12);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(canvas.width / 2 - 150, canvas.height - 45, 300, 16);
                 
                 // 进度条文字
                 ctx.fillStyle = '#ffffff';
-                ctx.font = '10px Arial';
+                ctx.font = 'bold 13px Arial';
                 ctx.textAlign = 'center';
-                ctx.fillText('奖励赛道', canvas.width / 2, canvas.height - 45);
+                ctx.shadowColor = '#00ffff';
+                ctx.shadowBlur = 8;
+                ctx.fillText('奖励赛道', canvas.width / 2, canvas.height - 22);
+                ctx.shadowBlur = 0;
             }
             
             // 奖励赛道倒计时进度条（奖励赛道显示）
@@ -4939,35 +6306,65 @@
                 const progress = rewardTrackTimeLeft / REWARD_TRACK_DURATION;
                 const clampedProgress = Math.min(1, Math.max(0, progress));
                 
+                // 顶部介绍卡片背景
+                ctx.fillStyle = 'rgba(5, 10, 25, 0.95)';
+                ctx.strokeStyle = 'rgba(255, 215, 0, 0.5)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.roundRect(canvas.width / 2 - 200, 20, 400, 50, 12);
+                ctx.fill();
+                ctx.stroke();
+                
+                // 奖励赛道提示文字
+                ctx.fillStyle = '#ffd700';
+                ctx.font = 'bold 18px Arial';
+                ctx.textAlign = 'center';
+                ctx.shadowColor = '#ffd700';
+                ctx.shadowBlur = 15;
+                ctx.fillText('✨ 奖励赛道 ✨', canvas.width / 2, 45);
+                ctx.shadowBlur = 0;
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '13px Arial';
+                ctx.fillText('无障碍物！收集更多金币！', canvas.width / 2, 62);
+                
+                // 底部进度条背景卡片
+                ctx.fillStyle = 'rgba(5, 10, 25, 0.9)';
+                ctx.strokeStyle = 'rgba(255, 215, 0, 0.4)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.roundRect(canvas.width / 2 - 160, canvas.height - 55, 320, 45, 10);
+                ctx.fill();
+                ctx.stroke();
+                
                 // 进度条背景
-                ctx.fillStyle = 'rgba(255, 200, 0, 0.2)';
-                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 40, 300, 12);
+                ctx.fillStyle = 'rgba(255, 200, 0, 0.15)';
+                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 45, 300, 16);
                 
                 // 进度条填充（金色渐变）
                 const gradient = ctx.createLinearGradient(canvas.width / 2 - 150, 0, canvas.width / 2 + 150, 0);
                 gradient.addColorStop(0, '#ffd700');
+                gradient.addColorStop(0.5, '#ffdd00');
                 gradient.addColorStop(1, '#ffaa00');
                 ctx.fillStyle = gradient;
-                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 40, 300 * clampedProgress, 12);
-                
-                // 进度条边框（金色）
-                ctx.strokeStyle = '#ffd700';
-                ctx.lineWidth = 2;
                 ctx.shadowColor = '#ffd700';
-                ctx.shadowBlur = 5;
-                ctx.strokeRect(canvas.width / 2 - 150, canvas.height - 40, 300, 12);
+                ctx.shadowBlur = 12;
+                ctx.fillRect(canvas.width / 2 - 150, canvas.height - 45, 300 * clampedProgress, 16);
                 ctx.shadowBlur = 0;
+                
+                // 进度条边框
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(canvas.width / 2 - 150, canvas.height - 45, 300, 16);
                 
                 // 进度条文字
                 ctx.fillStyle = '#ffd700';
-                ctx.font = 'bold 11px Arial';
+                ctx.font = 'bold 14px Arial';
                 ctx.textAlign = 'center';
-                ctx.fillText(`奖励赛道: ${Math.ceil(rewardTrackTimeLeft / 1000)}s`, canvas.width / 2, canvas.height - 45);
-                
-                // 奖励赛道提示文字
-                ctx.fillStyle = '#ffffff';
-                ctx.font = '14px Arial';
-                ctx.fillText('✨ 奖励赛道 - 无障碍物！收集更多金币！ ✨', canvas.width / 2, 50);
+                ctx.shadowColor = '#ffd700';
+                ctx.shadowBlur = 10;
+                ctx.fillText(`奖励赛道: ${Math.ceil(rewardTrackTimeLeft / 1000)}s`, canvas.width / 2, canvas.height - 22);
+                ctx.shadowBlur = 0;
             }
             
             ctx.restore();
@@ -5080,11 +6477,66 @@
                 if (gameState === GameState.PLAYING) {
                     // 暂停游戏
                     gameState = GameState.PAUSED;
-                    // 显示当前分数
-                    document.getElementById('pauseScore').textContent = `当前分数: ${score}`;
+                    // 显示当前数据
+                    document.getElementById('pauseScore').textContent = Math.floor(distance);
+                    document.getElementById('pauseDistance').textContent = Math.floor(distance) + 'm';
+                    document.getElementById('pauseCoins').textContent = coinCount;
+                    document.getElementById('pauseDiamonds').textContent = diamondCount;
+                    
+                    // 更新道具列表
+                    const pausePowerupsList = document.getElementById('pausePowerupsList');
+                    const activePowerupItems = [];
+                    if (activePowerups.dash.active) {
+                        const remaining = Math.ceil((activePowerups.dash.endTime - Date.now()) / 1000);
+                        activePowerupItems.push(`
+                            <div class="pause-powerup-item">
+                                <svg class="pause-powerup-icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="rgba(0,255,255,0.2)"/>
+                                    <path d="M12,4 L9,12 L10,12 L8,20 L16,12 L14,12 L16,4 Z" fill="#00ffff"/>
+                                </svg>
+                                <span class="pause-powerup-name">冲刺</span>
+                                <span class="pause-powerup-time">${remaining}s</span>
+                            </div>
+                        `);
+                    }
+                    if (activePowerups.shield.active) {
+                        const remaining = Math.ceil((activePowerups.shield.endTime - Date.now()) / 1000);
+                        activePowerupItems.push(`
+                            <div class="pause-powerup-item">
+                                <svg class="pause-powerup-icon" viewBox="0 0 24 24">
+                                    <polygon points="12,3 20,9 20,18 12,24 4,18 4,9" fill="rgba(255,68,255,0.2)" stroke="#ff44ff" stroke-width="1"/>
+                                    <polygon points="12,5 18,10 18,17 12,22 6,17 6,10" fill="#ff44ff" opacity="0.5"/>
+                                </svg>
+                                <span class="pause-powerup-name">护盾</span>
+                                <span class="pause-powerup-time">${remaining}s</span>
+                            </div>
+                        `);
+                    }
+                    if (activePowerups.magnet.active) {
+                        const remaining = Math.ceil((activePowerups.magnet.endTime - Date.now()) / 1000);
+                        activePowerupItems.push(`
+                            <div class="pause-powerup-item">
+                                <svg class="pause-powerup-icon" viewBox="0 0 24 24">
+                                    <ellipse cx="8" cy="8" rx="4" ry="5" fill="#ffaa00"/>
+                                    <ellipse cx="16" cy="8" rx="4" ry="5" fill="#ffaa00"/>
+                                    <rect x="8" y="10" width="8" height="2" fill="#ffaa00"/>
+                                    <path d="M8,10 Q12,16 16,10" stroke="#ffaa00" stroke-width="3" fill="none" stroke-linecap="round"/>
+                                </svg>
+                                <span class="pause-powerup-name">磁铁</span>
+                                <span class="pause-powerup-time">${remaining}s</span>
+                            </div>
+                        `);
+                    }
+                    
+                    if (activePowerupItems.length > 0) {
+                        pausePowerupsList.innerHTML = activePowerupItems.join('');
+                    } else {
+                        pausePowerupsList.innerHTML = '<div style="color: rgba(255,255,255,0.4); font-size: 12px;">暂无激活道具</div>';
+                    }
+                    
                     // 检查是否破纪录
                     const pauseNewRecord = document.getElementById('pauseNewRecord');
-                    if (score > highScore) {
+                    if (distance > highScore) {
                         pauseNewRecord.classList.add('show');
                     } else {
                         pauseNewRecord.classList.remove('show');
@@ -5115,12 +6567,16 @@
                     player.velocityY = JUMP_FORCE;
                     player.jumpHeld = true;
                     player.jumpCount = 1;
-                } else if (player.jumpCount < maxJumps && player.velocityY > 0) {
+                } else if (player.jumpCount < maxJumps) {
                     player.jumpCount++;
                     const jumpMultiplier = player.jumpCount === 2 ? 0.85 : 0.75;
                     player.velocityY = JUMP_FORCE * jumpMultiplier;
                     player.isDoubleJumping = true;
                     player.doubleJumpFrame = 0;
+                } else {
+                    // 跳跃缓冲：当跳跃次数用完但即将落地时，记录跳跃意图
+                    player.jumpBuffered = true;
+                    player.jumpBufferTimer = 150; // 150ms缓冲时间
                 }
             }
             if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
